@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwwmnr8prvcav"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v72yg"]
+size = Vector2(100, 100)
+
+[node name="Morse Button" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+icon = SubResource("PlaceholderTexture2D_v72yg")
