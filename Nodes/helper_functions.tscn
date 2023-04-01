@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://oehqqojrw72t"]
+
+[ext_resource type="Script" path="res://Scripts/helper_functions.gd" id="1_oqdrq"]
+
+[node name="Helper Functions" type="Node"]
+script = ExtResource("1_oqdrq")

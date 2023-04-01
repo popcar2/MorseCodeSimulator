@@ -2,6 +2,7 @@ extends Node
 
 @onready var morse_button: Button = %'Morse Button'
 @onready var morse_label: RichTextLabel = %'Morse Label'
+@onready var normal_label: RichTextLabel = %'Normal Label'
 @onready var reset_button: Button = %'Reset Button'
 @onready var held_timer: Timer = $'Held Timer'
 @onready var word_timer: Timer = $'Word Timer'
@@ -31,24 +32,30 @@ func _on_morse_button_up():
 	var time_left: float = held_timer.time_left
 	held_timer.stop()
 	if time_left > 0.85:
-		morse_label.append_text('E')
+		morse_label.text += 'E'
 	else:
-		morse_label.append_text('T')
+		morse_label.text += 'T'
 	morse_audio.stop()
 	is_held = false
+	
+	morse_label.text = HelperFunctions.highlight_last_word(HelperFunctions.strip_bbcode(morse_label.text))
+	normal_label.text = HelperFunctions.highlight_last_letter(
+		HelperFunctions.morse_to_text(HelperFunctions.strip_bbcode(morse_label.text)))
 
 func _on_word_timer_timeout():
 	if !is_held:
-		morse_label.append_text('|')
+		morse_label.text += '|'
 
 func _on_letter_timer_timeout():
 	if is_held:
 		_on_morse_button_up()
 	else:
-		morse_label.append_text(' ')
+		morse_label.text += ' '
+		morse_label.text = HelperFunctions.strip_bbcode(morse_label.text)
+		normal_label.text = HelperFunctions.strip_bbcode(normal_label.text)
 
 func reset_label():
-	morse_label.clear()
+	morse_label.text = ''
+	normal_label.text = ''
 
-func morse_to_text():
-	pass
+
