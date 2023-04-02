@@ -18,7 +18,16 @@ func _ready():
 	letter_timer.connect("timeout", _on_letter_timer_timeout)
 	reset_button.connect("pressed", reset_label)
 
+func _input(event):
+	if event.is_action_pressed("press_morse"):
+		_on_morse_button_down()
+	elif event.is_action_released("press_morse"):
+		_on_morse_button_up()
+
 func _on_morse_button_down():
+	if is_held:
+		return
+	
 	held_timer.start()
 	morse_audio.play()
 	word_timer.start()
@@ -57,5 +66,5 @@ func _on_letter_timer_timeout():
 func reset_label():
 	morse_label.text = ''
 	normal_label.text = ''
-
-
+	letter_timer.stop()
+	word_timer.stop()
