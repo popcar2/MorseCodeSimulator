@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnufy112kiirt"]
+[gd_scene load_steps=11 format=3 uid="uid://cnufy112kiirt"]
 
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_1p657"]
 [ext_resource type="Script" path="res://Scripts/morse_controller.gd" id="1_dkpn7"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bxy4r5jqiib5t" path="res://Fonts/morse.ttf" id="3_vom0s"]
 [ext_resource type="Texture2D" uid="uid://d2uc3s8tggxmr" path="res://Art/Morse Sheet.png" id="4_ds2fy"]
 [ext_resource type="Theme" uid="uid://cf75duugimbj7" path="res://Themes/CircularButton.tres" id="5_lqst7"]
+[ext_resource type="Script" path="res://Scripts/reveal_on_click.gd" id="6_jn1kn"]
 [ext_resource type="Script" path="res://Scripts/progress_bars.gd" id="8_ig5e7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7co60"]
@@ -39,11 +40,6 @@ one_shot = true
 [node name="Morse Audio" type="AudioStreamPlayer" parent="Morse Controller"]
 stream = ExtResource("2_k2b0h")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(906, 306)
-scale = Vector2(0.651502, 0.651502)
-texture = ExtResource("4_ds2fy")
-
 [node name="Morse Button" parent="." instance=ExtResource("2_cmave")]
 unique_name_in_owner = true
 layout_mode = 1
@@ -62,6 +58,19 @@ focus_mode = 0
 theme = ExtResource("5_lqst7")
 text = "BEEP"
 icon = null
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 753.0
+offset_top = 355.0
+offset_right = 1352.0
+offset_bottom = 1203.0
+scale = Vector2(0.65, 0.65)
+script = ExtResource("6_jn1kn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(299, 424)
+texture = ExtResource("4_ds2fy")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
