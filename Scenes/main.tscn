@@ -62,9 +62,9 @@ icon = null
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 753.0
-offset_top = 355.0
+offset_top = 15.0
 offset_right = 1352.0
-offset_bottom = 1203.0
+offset_bottom = 863.0
 scale = Vector2(0.65, 0.65)
 script = ExtResource("6_jn1kn")
 
