@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnufy112kiirt"]
+[gd_scene load_steps=12 format=3 uid="uid://qkn8vai1su0q"]
 
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_1p657"]
 [ext_resource type="Script" path="res://Scripts/morse_controller.gd" id="1_dkpn7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d2uc3s8tggxmr" path="res://Art/Morse Sheet.png" id="4_ds2fy"]
 [ext_resource type="Theme" uid="uid://cf75duugimbj7" path="res://Themes/CircularButton.tres" id="5_lqst7"]
 [ext_resource type="Script" path="res://Scripts/reveal_on_click.gd" id="6_jn1kn"]
+[ext_resource type="AudioStream" uid="uid://bdt7a5782ltkn" path="res://SFX/paper.mp3" id="8_gy17g"]
 [ext_resource type="Script" path="res://Scripts/progress_bars.gd" id="8_ig5e7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7co60"]
@@ -71,6 +72,9 @@ script = ExtResource("6_jn1kn")
 [node name="Sprite2D" type="Sprite2D" parent="Panel"]
 position = Vector2(299, 424)
 texture = ExtResource("4_ds2fy")
+
+[node name="Paper Click" type="AudioStreamPlayer" parent="Panel"]
+stream = ExtResource("8_gy17g")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

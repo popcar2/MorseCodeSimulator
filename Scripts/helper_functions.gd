@@ -46,7 +46,17 @@ func morse_to_text(text: String):
 			'TTTTE': translated_text += '9'
 			'TTTTT': translated_text += '0'
 			
-			_: translated_text += '?'
+			'ETETET': translated_text += '.'
+			'TTEETT': translated_text += ','
+			'EETTEE': translated_text += '?'
+			'TTTE': translated_text += '!'
+			'TTTEEE': translated_text += ':'
+			'TETETE': translated_text += ';'
+			'ETETE': translated_text += '+'
+			'TEEEET': translated_text += '-'
+			'TEEET': translated_text += '='
+			
+			_: translated_text += '☐'
 	
 	return translated_text
 
