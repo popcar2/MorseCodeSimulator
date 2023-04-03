@@ -9,6 +9,8 @@ extends Node
 @onready var letter_timer: Timer = $'Letter Timer'
 @onready var morse_audio: AudioStreamPlayer = $'Morse Audio'
 
+@export var long_press_time: float = 0.15
+
 var is_held: bool = false
 
 func _ready():
@@ -40,7 +42,7 @@ func _on_morse_button_up():
 	
 	var time_left: float = held_timer.time_left
 	held_timer.stop()
-	if time_left > 0.85:
+	if time_left > held_timer.wait_time - long_press_time:
 		morse_label.text += 'E'
 	else:
 		morse_label.text += 'T'
@@ -58,10 +60,9 @@ func _on_word_timer_timeout():
 func _on_letter_timer_timeout():
 	if is_held:
 		_on_morse_button_up()
-	else:
-		morse_label.text += ' '
-		morse_label.text = HelperFunctions.strip_bbcode(morse_label.text)
-		normal_label.text = HelperFunctions.strip_bbcode(normal_label.text)
+	morse_label.text += ' '
+	morse_label.text = HelperFunctions.strip_bbcode(morse_label.text)
+	normal_label.text = HelperFunctions.strip_bbcode(normal_label.text)
 
 func reset_label():
 	morse_label.text = ''

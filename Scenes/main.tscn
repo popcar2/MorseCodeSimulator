@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnufy112kiirt"]
+[gd_scene load_steps=10 format=3 uid="uid://cnufy112kiirt"]
 
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_1p657"]
 [ext_resource type="Script" path="res://Scripts/morse_controller.gd" id="1_dkpn7"]
 [ext_resource type="PackedScene" uid="uid://bwwmnr8prvcav" path="res://Nodes/morse_button.tscn" id="2_cmave"]
 [ext_resource type="AudioStream" uid="uid://dbdtq58qo4v2f" path="res://SFX/tone.wav" id="2_k2b0h"]
 [ext_resource type="FontFile" uid="uid://bxy4r5jqiib5t" path="res://Fonts/morse.ttf" id="3_vom0s"]
+[ext_resource type="Texture2D" uid="uid://d2uc3s8tggxmr" path="res://Art/Morse Sheet.png" id="4_ds2fy"]
 [ext_resource type="Theme" uid="uid://cf75duugimbj7" path="res://Themes/CircularButton.tres" id="5_lqst7"]
+[ext_resource type="Script" path="res://Scripts/progress_bars.gd" id="8_ig5e7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7co60"]
+bg_color = Color(0.0117647, 0.0313726, 0.0666667, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -17,9 +22,11 @@ grow_vertical = 2
 theme = ExtResource("1_1p657")
 
 [node name="Morse Controller" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("1_dkpn7")
 
 [node name="Held Timer" type="Timer" parent="Morse Controller"]
+wait_time = 0.5
 one_shot = true
 
 [node name="Word Timer" type="Timer" parent="Morse Controller"]
@@ -31,6 +38,11 @@ one_shot = true
 
 [node name="Morse Audio" type="AudioStreamPlayer" parent="Morse Controller"]
 stream = ExtResource("2_k2b0h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(906, 306)
+scale = Vector2(0.651502, 0.651502)
+texture = ExtResource("4_ds2fy")
 
 [node name="Morse Button" parent="." instance=ExtResource("2_cmave")]
 unique_name_in_owner = true
@@ -51,34 +63,39 @@ theme = ExtResource("5_lqst7")
 text = "BEEP"
 icon = null
 
-[node name="HSeparator" type="VSplitContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -211.0
+offset_top = -241.0
 grow_horizontal = 2
 grow_vertical = 0
-split_offset = 100
+theme_override_styles/panel = SubResource("StyleBoxFlat_7co60")
 
-[node name="Morse Panel" type="Panel" parent="HSeparator"]
+[node name="VSplitContainer" type="VSplitContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="Morse Label" type="RichTextLabel" parent="HSeparator/Morse Panel"]
+[node name="Morse Panel" type="Panel" parent="PanelContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Morse Label" type="RichTextLabel" parent="PanelContainer/VSplitContainer/Morse Panel"]
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 10.0
-offset_top = 10.0
+offset_top = 15.0
 offset_right = 1152.0
-offset_bottom = 226.0
+offset_bottom = 231.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("3_vom0s")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
+fit_content = true
 
-[node name="Reset Button" type="Button" parent="HSeparator/Morse Panel"]
+[node name="Reset Button" type="Button" parent="PanelContainer/VSplitContainer/Morse Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 offset_top = -31.0
@@ -86,17 +103,46 @@ offset_right = 51.0
 focus_mode = 0
 text = "Clear"
 
-[node name="Plaintext Panel" type="Panel" parent="HSeparator"]
+[node name="Plaintext Panel" type="Panel" parent="PanelContainer/VSplitContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Normal Label" type="RichTextLabel" parent="HSeparator/Plaintext Panel"]
+[node name="Normal Label" type="RichTextLabel" parent="PanelContainer/VSplitContainer/Plaintext Panel"]
 unique_name_in_owner = true
 layout_mode = 2
 offset_left = 10.0
-offset_top = 10.0
+offset_top = 15.0
 offset_right = 1152.0
-offset_bottom = 226.0
+offset_bottom = 231.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
+fit_content = true
+
+[node name="ProgressBars" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_ig5e7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ProgressBars"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 440.0
+offset_bottom = 120.0
+
+[node name="LongPressProgressBar" type="ProgressBar" parent="ProgressBars/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LetterProgressBar" type="ProgressBar" parent="ProgressBars/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 1, 1, 1)
+layout_mode = 2
+
+[node name="WordProgressBar" type="ProgressBar" parent="ProgressBars/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
