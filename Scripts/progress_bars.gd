@@ -6,9 +6,6 @@ extends Control
 @onready var word_progressbar: ProgressBar = %'WordProgressBar'
 
 @onready var morse_controller: Node = %'Morse Controller'
-@onready var long_press_time: float = morse_controller.long_press_time
-@onready var letter_time: float = morse_controller.letter_timer.wait_time
-@onready var word_time: float = morse_controller.word_timer.wait_time
 
 var tweens: Array[Tween]
 
@@ -18,9 +15,9 @@ func _ready():
 	tweens.resize(3)
 
 func _on_morse_button_down():
-	begin_tween(long_press_progressbar, 0, Color.RED, long_press_time)
-	begin_tween(letter_progressbar, 1, Color.WHITE, letter_time, true)
-	begin_tween(word_progressbar, 2, Color.WHITE, word_time, true)
+	begin_tween(long_press_progressbar, 0, Color.RED, SettingsMenu.long_press_time)
+	begin_tween(letter_progressbar, 1, Color.WHITE, SettingsMenu.letter_time, true)
+	begin_tween(word_progressbar, 2, Color.WHITE, SettingsMenu.word_time, true)
 
 func _on_morse_button_up():
 	end_tween(long_press_progressbar, 0, Color.WHITE)

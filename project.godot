@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 HelperFunctions="*res://Nodes/helper_functions.tscn"
+SettingsMenu="*res://Nodes/settings_menu.tscn"
 
 [display]
 

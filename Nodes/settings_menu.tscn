@@ -1,0 +1,143 @@
+[gd_scene load_steps=4 format=3 uid="uid://duew5kn8un3rv"]
+
+[ext_resource type="Script" path="res://Scripts/settings_menu.gd" id="1_btk2r"]
+[ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_xid6k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qwin"]
+bg_color = Color(0, 0, 0, 0.294118)
+
+[node name="Settings Menu Control" type="CanvasLayer"]
+script = ExtResource("1_btk2r")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2qwin")
+
+[node name="Settings Menu" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -225.0
+offset_right = 250.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xid6k")
+
+[node name="TabContainer" type="TabContainer" parent="Settings Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Settings" type="Panel" parent="Settings Menu/TabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_right = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Morse Speed Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Morse Speed Label" type="Label" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Morse Speed Container"]
+layout_mode = 2
+text = "Morse Speed"
+
+[node name="Morse Speed Option" type="OptionButton" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Morse Speed Container"]
+unique_name_in_owner = true
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 10
+item_count = 5
+selected = 2
+fit_to_longest_item = false
+popup/item_0/text = "Very Slow"
+popup/item_0/id = 0
+popup/item_1/text = "Slow"
+popup/item_1/id = 1
+popup/item_2/text = "Normal"
+popup/item_2/id = 2
+popup/item_3/text = "Fast"
+popup/item_3/id = 3
+popup/item_4/text = "Very Fast"
+popup/item_4/id = 4
+
+[node name="Advanced" type="Panel" parent="Settings Menu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Advanced"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_right = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Letter Time Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
+layout_mode = 2
+
+[node name="Letter Time Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container"]
+layout_mode = 2
+text = "Letter Timer"
+
+[node name="Letter Time Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 0.1
+max_value = 10.0
+step = 0.01
+value = 0.5
+alignment = 1
+custom_arrow_step = 0.1
+select_all_on_focus = true
+
+[node name="Word Time Container2" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
+layout_mode = 2
+
+[node name="Word Time Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container2"]
+layout_mode = 2
+text = "Word Time"
+
+[node name="Word Time Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 0.1
+max_value = 10.0
+step = 0.01
+value = 1.0
+alignment = 1
+custom_arrow_step = 0.1
+select_all_on_focus = true
+
+[connection signal="item_selected" from="Settings Menu/TabContainer/Settings/VBoxContainer/Morse Speed Container/Morse Speed Option" to="." method="_on_morse_speed_option_item_selected"]
+[connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container/Letter Time Spinbox" to="." method="_on_letter_time_spinbox_value_changed"]
+[connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container2/Word Time Spinbox" to="." method="_on_word_time_spinbox_value_changed"]
