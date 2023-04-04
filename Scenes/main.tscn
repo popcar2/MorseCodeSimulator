@@ -111,6 +111,7 @@ fit_content = true
 
 [node name="Reset Button" type="Button" parent="PanelContainer/VSplitContainer/Morse Panel"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 1
 offset_top = -31.0
 offset_right = 51.0
