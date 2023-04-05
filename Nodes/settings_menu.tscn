@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://duew5kn8un3rv"]
+[gd_scene load_steps=6 format=3 uid="uid://duew5kn8un3rv"]
 
 [ext_resource type="Script" path="res://Scripts/settings_menu.gd" id="1_btk2r"]
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_xid6k"]
+[ext_resource type="Theme" uid="uid://cf75duugimbj7" path="res://Themes/CircularButton.tres" id="3_gghs3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qwin"]
 bg_color = Color(0, 0, 0, 0.294118)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tog7p"]
+bg_color = Color(0.00596114, 0.0144457, 0.0359816, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Settings Menu Control" type="CanvasLayer"]
 script = ExtResource("1_btk2r")
@@ -30,6 +38,7 @@ offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xid6k")
+theme_override_styles/panel = SubResource("StyleBoxFlat_tog7p")
 
 [node name="TabContainer" type="TabContainer" parent="Settings Menu"]
 layout_mode = 1
@@ -157,7 +166,23 @@ alignment = 1
 custom_arrow_step = 0.05
 select_all_on_focus = true
 
+[node name="Close Button" type="Button" parent="Settings Menu"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 30.0
+grow_horizontal = 0
+focus_mode = 0
+theme = ExtResource("3_gghs3")
+theme_override_font_sizes/font_size = 14
+text = "X"
+
 [connection signal="item_selected" from="Settings Menu/TabContainer/Settings/VBoxContainer/Morse Speed Container/Morse Speed Option" to="." method="_on_morse_speed_option_item_selected"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container/Letter Time Spinbox" to="." method="_on_letter_time_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container/Word Time Spinbox" to="." method="_on_word_time_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container/Long Press Time Spinbox" to="." method="_on_long_press_time_spinbox_value_changed"]
+[connection signal="pressed" from="Settings Menu/Close Button" to="." method="_on_close_button_pressed"]

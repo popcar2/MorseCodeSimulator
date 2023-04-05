@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://3br2dpdlo6tc"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://3br2dpdlo6tc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_112p1"]
 bg_color = Color(0, 0, 0, 0.235294)
@@ -107,6 +107,24 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es044"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.0494537, 0.603102, 0.454238, 1)
+border_width_bottom = 2
+border_color = Color(0.110542, 0.975221, 0.742536, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8noau"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0, 0.152941, 0.129412, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_su2df"]
+bg_color = Color(0.0180302, 0.0435276, 0.0890716, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
 [resource]
 default_font_size = 18
 Button/styles/disabled = SubResource("StyleBoxFlat_112p1")
@@ -122,3 +140,6 @@ LineEdit/styles/normal = SubResource("StyleBoxFlat_u0dks")
 Panel/styles/panel = SubResource("StyleBoxFlat_rac15")
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_wl7ed")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_m1o3f")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_es044")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_8noau")
+TabContainer/styles/tabbar_background = SubResource("StyleBoxFlat_su2df")

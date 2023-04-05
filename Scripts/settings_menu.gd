@@ -44,3 +44,6 @@ func _on_word_time_spinbox_value_changed(value):
 
 func _on_long_press_time_spinbox_value_changed(value):
 	long_press_time = value
+
+func _on_close_button_pressed():
+	visible = false
