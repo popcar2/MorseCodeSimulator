@@ -119,20 +119,32 @@ stream = ExtResource("8_gy17g")
 [node name="Panel Buttons" type="HBoxContainer" parent="Bottom Panels"]
 layout_mode = 0
 offset_top = 367.0
-offset_right = 110.0
+offset_right = 200.0
 offset_bottom = 407.0
 
 [node name="Hide Button" type="Button" parent="Bottom Panels/Panel Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 focus_mode = 0
+theme_override_font_sizes/font_size = 17
 toggle_mode = true
 text = "Hide"
+
+[node name="Play Morse Button" type="Button" parent="Bottom Panels/Panel Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 17
+text = "Play"
 
 [node name="Reset Button" type="Button" parent="Bottom Panels/Panel Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 focus_mode = 0
+theme_override_font_sizes/font_size = 17
 text = "Clear"
 
 [node name="PanelContainer" type="PanelContainer" parent="Bottom Panels"]

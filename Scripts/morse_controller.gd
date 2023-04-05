@@ -5,12 +5,14 @@ extends Node
 @onready var normal_label: RichTextLabel = %'Normal Label'
 @onready var reset_button: Button = %'Reset Button'
 @onready var hide_button: Button = %'Hide Button'
+@onready var play_morse_button: Button = %'Play Morse Button'
 @onready var held_timer: Timer = $'Held Timer'
 @onready var word_timer: Timer = $'Word Timer'
 @onready var letter_timer: Timer = $'Letter Timer'
 @onready var morse_audio: AudioStreamPlayer = $'Morse Audio'
 
 var is_held: bool = false
+var is_playing_back: bool = false
 
 func _ready():
 	morse_button.connect("button_down", _on_morse_button_down)
@@ -19,6 +21,7 @@ func _ready():
 	letter_timer.connect("timeout", _on_letter_timer_timeout)
 	reset_button.connect("pressed", reset_label)
 	hide_button.connect("toggled", _hide_panel_toggled)
+	play_morse_button.connect("pressed", _on_play_morse_button_pressed)
 
 func _input(event):
 	if event.is_action_pressed("press_morse"):
@@ -78,3 +81,28 @@ func _hide_panel_toggled(toggled: bool):
 		tween.tween_property(%'Bottom Panels', "position:y", 0, 1)
 	else:
 		tween.tween_property(%'Bottom Panels', "position:y", 230, 1)
+
+func _on_play_morse_button_pressed():
+	if is_playing_back:
+		return
+	
+	is_playing_back = true
+	for c in morse_label.text:
+		if !is_playing_back:
+			return
+		
+		if c == 'E':
+			morse_audio.play()
+			await get_tree().create_timer(0.05).timeout
+			morse_audio.stop()
+			await get_tree().create_timer(0.05).timeout
+		elif c == 'T':
+			morse_audio.play()
+			await get_tree().create_timer(0.15).timeout
+			morse_audio.stop()
+			await get_tree().create_timer(0.05).timeout
+		elif c == ' ':
+			await get_tree().create_timer(0.15).timeout
+		elif c == '|':
+			await get_tree().create_timer(0.4).timeout
+	is_playing_back = false

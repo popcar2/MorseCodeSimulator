@@ -49,6 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Settings" type="Panel" parent="Settings Menu/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Settings"]
@@ -92,7 +93,6 @@ popup/item_4/text = "Very Fast"
 popup/item_4/id = 4
 
 [node name="Advanced" type="Panel" parent="Settings Menu/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Advanced"]
@@ -114,7 +114,7 @@ layout_mode = 2
 
 [node name="Letter Time Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container"]
 layout_mode = 2
-text = "Letter Timer"
+text = "New Letter Timer"
 
 [node name="Letter Time Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container"]
 unique_name_in_owner = true
@@ -133,7 +133,7 @@ layout_mode = 2
 
 [node name="Word Time Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container"]
 layout_mode = 2
-text = "Word Time"
+text = "New Word Timer"
 
 [node name="Word Time Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container"]
 unique_name_in_owner = true
@@ -152,7 +152,7 @@ layout_mode = 2
 
 [node name="Long Press Time Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container"]
 layout_mode = 2
-text = "Word Time"
+text = "Dah Timer"
 
 [node name="Long Press Time Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container"]
 unique_name_in_owner = true
