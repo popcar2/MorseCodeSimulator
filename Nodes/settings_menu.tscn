@@ -17,7 +17,7 @@ corner_radius_bottom_left = 20
 [node name="Settings Menu Control" type="CanvasLayer"]
 script = ExtResource("1_btk2r")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Background Panel" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -49,7 +49,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Settings" type="Panel" parent="Settings Menu/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Settings"]
@@ -93,6 +92,7 @@ popup/item_4/text = "Very Fast"
 popup/item_4/id = 4
 
 [node name="Advanced" type="Panel" parent="Settings Menu/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Advanced"]
