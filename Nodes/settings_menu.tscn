@@ -40,7 +40,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Settings" type="Panel" parent="Settings Menu/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Settings"]
@@ -84,6 +83,7 @@ popup/item_4/text = "Very Fast"
 popup/item_4/id = 4
 
 [node name="Advanced" type="Panel" parent="Settings Menu/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Advanced"]

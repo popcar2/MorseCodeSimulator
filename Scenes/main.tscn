@@ -58,82 +58,9 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 theme = ExtResource("5_lqst7")
+keep_pressed_outside = true
 text = "BEEP"
 icon = null
-
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 753.0
-offset_top = 15.0
-offset_right = 1352.0
-offset_bottom = 863.0
-scale = Vector2(0.65, 0.65)
-script = ExtResource("6_jn1kn")
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel"]
-position = Vector2(299, 424)
-texture = ExtResource("4_ds2fy")
-
-[node name="Paper Click" type="AudioStreamPlayer" parent="Panel"]
-stream = ExtResource("8_gy17g")
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -241.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_7co60")
-
-[node name="VSplitContainer" type="VSplitContainer" parent="PanelContainer"]
-layout_mode = 2
-
-[node name="Morse Panel" type="Panel" parent="PanelContainer/VSplitContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Morse Label" type="RichTextLabel" parent="PanelContainer/VSplitContainer/Morse Panel"]
-unique_name_in_owner = true
-layout_mode = 2
-offset_left = 10.0
-offset_top = 15.0
-offset_right = 1152.0
-offset_bottom = 231.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("3_vom0s")
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-fit_content = true
-
-[node name="Reset Button" type="Button" parent="PanelContainer/VSplitContainer/Morse Panel"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 1
-offset_top = -31.0
-offset_right = 51.0
-focus_mode = 0
-text = "Clear"
-
-[node name="Plaintext Panel" type="Panel" parent="PanelContainer/VSplitContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Normal Label" type="RichTextLabel" parent="PanelContainer/VSplitContainer/Plaintext Panel"]
-unique_name_in_owner = true
-layout_mode = 2
-offset_left = 10.0
-offset_top = 15.0
-offset_right = 1152.0
-offset_bottom = 231.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-fit_content = true
 
 [node name="ProgressBars" type="Control" parent="."]
 anchors_preset = 0
@@ -161,3 +88,98 @@ layout_mode = 2
 unique_name_in_owner = true
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
+
+[node name="Bottom Panels" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Cheat Sheet" type="Panel" parent="Bottom Panels"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 753.0
+offset_top = 15.0
+offset_right = 1352.0
+offset_bottom = 863.0
+scale = Vector2(0.65, 0.65)
+script = ExtResource("6_jn1kn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottom Panels/Cheat Sheet"]
+position = Vector2(299, 424)
+texture = ExtResource("4_ds2fy")
+
+[node name="Paper Click" type="AudioStreamPlayer" parent="Bottom Panels/Cheat Sheet"]
+stream = ExtResource("8_gy17g")
+
+[node name="Panel Buttons" type="HBoxContainer" parent="Bottom Panels"]
+layout_mode = 0
+offset_top = 367.0
+offset_right = 110.0
+offset_bottom = 407.0
+
+[node name="Hide Button" type="Button" parent="Bottom Panels/Panel Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+text = "Hide"
+
+[node name="Reset Button" type="Button" parent="Bottom Panels/Panel Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Clear"
+
+[node name="PanelContainer" type="PanelContainer" parent="Bottom Panels"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -241.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7co60")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Bottom Panels/PanelContainer"]
+layout_mode = 2
+
+[node name="Morse Panel" type="Panel" parent="Bottom Panels/PanelContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Morse Label" type="RichTextLabel" parent="Bottom Panels/PanelContainer/VSplitContainer/Morse Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 10.0
+offset_top = 15.0
+offset_right = 1152.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_vom0s")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+fit_content = true
+
+[node name="Plaintext Panel" type="Panel" parent="Bottom Panels/PanelContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Normal Label" type="RichTextLabel" parent="Bottom Panels/PanelContainer/VSplitContainer/Plaintext Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 10.0
+offset_top = 15.0
+offset_right = 1152.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+fit_content = true

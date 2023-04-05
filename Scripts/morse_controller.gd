@@ -4,6 +4,7 @@ extends Node
 @onready var morse_label: RichTextLabel = %'Morse Label'
 @onready var normal_label: RichTextLabel = %'Normal Label'
 @onready var reset_button: Button = %'Reset Button'
+@onready var hide_button: Button = %'Hide Button'
 @onready var held_timer: Timer = $'Held Timer'
 @onready var word_timer: Timer = $'Word Timer'
 @onready var letter_timer: Timer = $'Letter Timer'
@@ -17,6 +18,7 @@ func _ready():
 	word_timer.connect("timeout", _on_word_timer_timeout)
 	letter_timer.connect("timeout", _on_letter_timer_timeout)
 	reset_button.connect("pressed", reset_label)
+	hide_button.connect("toggled", _hide_panel_toggled)
 
 func _input(event):
 	if event.is_action_pressed("press_morse"):
@@ -67,3 +69,12 @@ func reset_label():
 	normal_label.text = ''
 	letter_timer.stop()
 	word_timer.stop()
+
+func _hide_panel_toggled(toggled: bool):
+	var tween: Tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	if !toggled:
+		tween.tween_property(%'Bottom Panels', "position:y", 0, 1)
+	else:
+		tween.tween_property(%'Bottom Panels', "position:y", 230, 1)
