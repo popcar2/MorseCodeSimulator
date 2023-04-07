@@ -13,6 +13,10 @@ func _ready():
 	morse_button.connect("button_down", _on_morse_button_down)
 	morse_button.connect("button_up", _on_morse_button_up)
 	tweens.resize(3)
+	
+	SettingsMenu.debug_mode_changed.connect(_on_debug_mode_changed)
+	if !SettingsMenu.debug_mode:
+		hide()
 
 func _on_morse_button_down():
 	begin_tween(long_press_progressbar, 0, Color.RED, SettingsMenu.long_press_time)
@@ -41,3 +45,9 @@ func end_tween(progressbar: ProgressBar, idx: int, end_color: Color):
 		tweens[idx].kill()
 	
 	long_press_progressbar.value = 0
+
+func _on_debug_mode_changed(activated: bool):
+	if activated:
+		show()
+	else:
+		hide()

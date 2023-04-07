@@ -49,6 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Settings" type="Panel" parent="Settings Menu/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Settings"]
@@ -92,7 +93,6 @@ popup/item_4/text = "Very Fast"
 popup/item_4/id = 4
 
 [node name="Advanced" type="Panel" parent="Settings Menu/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Advanced"]
@@ -166,6 +166,21 @@ alignment = 1
 custom_arrow_step = 0.05
 select_all_on_focus = true
 
+[node name="HSeparator" type="HSeparator" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
+layout_mode = 2
+
+[node name="Debug Mode Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
+layout_mode = 2
+
+[node name="Debug Mode Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Debug Mode Container"]
+layout_mode = 2
+text = "Debug Mode"
+
+[node name="Debug Mode Button" type="CheckButton" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Debug Mode Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+
 [node name="Close Button" type="Button" parent="Settings Menu" groups=["button click"]]
 layout_mode = 1
 anchors_preset = 1
@@ -185,4 +200,5 @@ text = "X"
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container/Letter Time Spinbox" to="." method="_on_letter_time_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container/Word Time Spinbox" to="." method="_on_word_time_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container/Long Press Time Spinbox" to="." method="_on_long_press_time_spinbox_value_changed"]
+[connection signal="toggled" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Debug Mode Container/Debug Mode Button" to="." method="_on_debug_mode_button_toggled"]
 [connection signal="pressed" from="Settings Menu/Close Button" to="." method="_on_close_button_pressed"]

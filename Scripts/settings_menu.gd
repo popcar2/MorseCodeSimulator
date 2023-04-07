@@ -1,9 +1,18 @@
 extends CanvasLayer
 
+signal debug_mode_changed(activated: bool)
+var debug_mode: bool = false
+
 @onready var morse_speed: int = %'Morse Speed Option'.selected # 2
 @onready var letter_time: float = %'Letter Time Spinbox'.value # 0.5
 @onready var word_time: float = %'Word Time Spinbox'.value # 1
 var long_press_time: float = 0.15
+
+# TODO: Make options for these variables and hook it up with morse_controller
+var playback_dit_time: float = 0.05
+var playback_dah_time: float = 0.15
+var playback_space_time: float = 0.2
+var playback_word_time: float = 0.6
 
 func _ready():
 	visible = false
@@ -63,3 +72,7 @@ func _on_long_press_time_spinbox_value_changed(value):
 
 func _on_close_button_pressed():
 	show_hide_menu()
+
+func _on_debug_mode_button_toggled(button_pressed):
+	debug_mode = button_pressed
+	debug_mode_changed.emit(debug_mode)
