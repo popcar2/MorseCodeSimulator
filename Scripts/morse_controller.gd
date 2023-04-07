@@ -21,7 +21,7 @@ func _ready():
 	letter_timer.connect("timeout", _on_letter_timer_timeout)
 	reset_button.connect("pressed", reset_label)
 	hide_button.connect("toggled", _hide_panel_toggled)
-	play_morse_button.connect("pressed", _on_play_morse_button_pressed)
+	play_morse_button.connect("toggled", _on_play_morse_button_toggled)
 
 func _input(event):
 	if event.is_action_pressed("press_morse"):
@@ -38,6 +38,7 @@ func _on_morse_button_down():
 	word_timer.start(SettingsMenu.word_time)
 	morse_audio.play()
 	is_held = true
+	is_playing_back = false
 
 func _on_morse_button_up():
 	if !is_held:
@@ -52,9 +53,9 @@ func _on_morse_button_up():
 	morse_audio.stop()
 	is_held = false
 	
-	morse_label.text = HelperFunctions.highlight_last_word(HelperFunctions.strip_bbcode(morse_label.text))
-	normal_label.text = HelperFunctions.highlight_last_letter(
-		HelperFunctions.morse_to_text(HelperFunctions.strip_bbcode(morse_label.text)))
+	morse_label.text = HelperFunctions.highlight_specific_word(HelperFunctions.strip_bbcode(morse_label.text), -1)
+	normal_label.text = HelperFunctions.highlight_specific_letter(
+		HelperFunctions.morse_to_text(HelperFunctions.strip_bbcode(morse_label.text)), -1)
 
 func _on_word_timer_timeout():
 	if !is_held:
@@ -72,6 +73,7 @@ func reset_label():
 	normal_label.text = ''
 	letter_timer.stop()
 	word_timer.stop()
+	is_playing_back = false
 
 func _hide_panel_toggled(toggled: bool):
 	var tween: Tween = create_tween()
@@ -82,14 +84,24 @@ func _hide_panel_toggled(toggled: bool):
 	else:
 		tween.tween_property(%'Bottom Panels', "position:y", 230, 1)
 
-func _on_play_morse_button_pressed():
+func _on_play_morse_button_toggled(_toggled: bool):
 	if is_playing_back:
+		reset_play_morse_button()
 		return
 	
 	is_playing_back = true
+	var word_count: int = 0
+	var space_count: int = 0 # For skipping spaces when highlighting letters
 	for c in morse_label.text:
 		if !is_playing_back:
+			reset_play_morse_button()
 			return
+		
+		if c != '|':
+			morse_label.text = HelperFunctions.highlight_specific_word(
+				HelperFunctions.strip_bbcode(morse_label.text), word_count)
+			normal_label.text = HelperFunctions.highlight_specific_letter(
+				HelperFunctions.strip_bbcode(normal_label.text), word_count + space_count)
 		
 		if c == 'E':
 			morse_audio.play()
@@ -102,7 +114,18 @@ func _on_play_morse_button_pressed():
 			morse_audio.stop()
 			await get_tree().create_timer(0.05).timeout
 		elif c == ' ':
+			word_count += 1
 			await get_tree().create_timer(0.15).timeout
 		elif c == '|':
+			space_count += 1
 			await get_tree().create_timer(0.4).timeout
 	is_playing_back = false
+	morse_label.text = HelperFunctions.strip_bbcode(morse_label.text)
+	normal_label.text = HelperFunctions.strip_bbcode(normal_label.text)
+	play_morse_button.set_pressed_no_signal(false)
+
+func reset_play_morse_button():
+	is_playing_back = false
+	morse_label.text = HelperFunctions.strip_bbcode(morse_label.text)
+	normal_label.text = HelperFunctions.strip_bbcode(normal_label.text)
+	play_morse_button.set_pressed_no_signal(false)

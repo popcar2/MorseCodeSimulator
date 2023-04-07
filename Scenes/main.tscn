@@ -57,6 +57,7 @@ offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 theme = ExtResource("5_lqst7")
 keep_pressed_outside = true
 text = "BEEP"
@@ -137,6 +138,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 17
+toggle_mode = true
 text = "Play"
 
 [node name="Reset Button" type="Button" parent="Bottom Panels/Panel Buttons"]

@@ -55,28 +55,37 @@ func morse_to_text(text: String):
 			'ETETE': translated_text += '+'
 			'TEEEET': translated_text += '-'
 			'TEEET': translated_text += '='
+			'ETTTTE': translated_text += "'"
+			'TEETE': translated_text += '/'
+			'ETEETE': translated_text += '"'
+			'TETTE': translated_text += '('
+			'TETTET': translated_text += ')'
 			
 			_: translated_text += '☐'
 	
 	return translated_text
 
-func highlight_last_word(text: String):
+func highlight_specific_word(text: String, idx: int):
 	var split_text: PackedStringArray = text.split(' ')
-	var has_slash = split_text[-1].begins_with('|')
+	var has_slash = split_text[idx].begins_with('|')
 	
 	if has_slash:
-		split_text[-1] = split_text[-1].trim_prefix('|')
+		split_text[idx] = split_text[idx].trim_prefix('|')
 	
-	split_text[-1] = '[color=red]' + split_text[-1] + '[/color]'
+	split_text[idx] = '[color=red]' + split_text[idx] + '[/color]'
 	
 	if has_slash:
-		split_text[-1] = '|' + split_text[-1]
+		split_text[idx] = '|' + split_text[idx]
 	
 	return ' '.join(split_text)
 
-func highlight_last_letter(text: String):
-	text = text.insert(text.length() - 1, "[color=red]")
-	text = text.insert(text.length(), '[/color]')
+func highlight_specific_letter(text: String, idx: int):
+	if idx < 0:
+		text = text.insert(text.length() - idx - 2, "[color=red]")
+		text = text.insert(text.length() - idx + 1, '[/color]')
+	else:
+		text = text.insert(idx, "[color=red]")
+		text = text.insert(text.find(']', idx) + 2, '[/color]')
 	return text
 
 func strip_bbcode(text: String):

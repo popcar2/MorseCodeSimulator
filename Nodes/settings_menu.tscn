@@ -70,7 +70,7 @@ layout_mode = 2
 
 [node name="Morse Speed Label" type="Label" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Morse Speed Container"]
 layout_mode = 2
-text = "Morse Speed"
+text = "Morse Typing Speed"
 
 [node name="Morse Speed Option" type="OptionButton" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Morse Speed Container"]
 unique_name_in_owner = true
