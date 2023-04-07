@@ -26,8 +26,10 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("press_morse"):
 		morse_button.emit_signal("button_down")
+		morse_button.set_pressed_no_signal(true)
 	elif event.is_action_released("press_morse"):
 		morse_button.emit_signal("button_up")
+		morse_button.set_pressed_no_signal(false)
 
 func _on_morse_button_down():
 	if is_held:

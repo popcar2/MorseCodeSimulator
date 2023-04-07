@@ -166,7 +166,7 @@ alignment = 1
 custom_arrow_step = 0.05
 select_all_on_focus = true
 
-[node name="Close Button" type="Button" parent="Settings Menu"]
+[node name="Close Button" type="Button" parent="Settings Menu" groups=["button click"]]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

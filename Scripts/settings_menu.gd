@@ -13,18 +13,21 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		var tween: Tween = get_tree().create_tween()
-		tween.set_parallel(true)
-		tween.set_ease(Tween.EASE_OUT)
-		tween.set_trans(Tween.TRANS_SINE)
-		if visible: 
-			tween.tween_property($'Background Panel', "modulate:a", 0, 0.2)
-			await tween.tween_property($'Settings Menu', "modulate:a", 0, 0.2).finished
-			visible = false
-		else:
-			visible = true
-			tween.tween_property($'Background Panel', "modulate:a", 1, 0.2)
-			await tween.tween_property($'Settings Menu', "modulate:a", 1, 0.2).finished
+		show_hide_menu()
+
+func show_hide_menu():
+	var tween: Tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_SINE)
+	if visible: 
+		tween.tween_property($'Background Panel', "modulate:a", 0, 0.2)
+		await tween.tween_property($'Settings Menu', "modulate:a", 0, 0.2).finished
+		visible = false
+	else:
+		visible = true
+		tween.tween_property($'Background Panel', "modulate:a", 1, 0.2)
+		await tween.tween_property($'Settings Menu', "modulate:a", 1, 0.2).finished
 
 func _on_morse_speed_option_item_selected(index):
 	morse_speed = index
@@ -59,4 +62,4 @@ func _on_long_press_time_spinbox_value_changed(value):
 	long_press_time = value
 
 func _on_close_button_pressed():
-	visible = false
+	show_hide_menu()

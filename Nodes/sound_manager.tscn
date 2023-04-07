@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cscdux0e6nqtc"]
+[gd_scene load_steps=5 format=3 uid="uid://cscdux0e6nqtc"]
 
 [ext_resource type="Script" path="res://Scripts/sound_manager.gd" id="1_0s7ei"]
 [ext_resource type="AudioStream" uid="uid://mdnbecc12qba" path="res://SFX/maximize.ogg" id="1_jusdh"]
 [ext_resource type="AudioStream" uid="uid://bwqy50mttbdef" path="res://SFX/minimize.ogg" id="2_ucdnb"]
+[ext_resource type="AudioStream" uid="uid://bql578rtf6fxp" path="res://SFX/click.ogg" id="4_xtb2a"]
 
 [node name="Sound Manager" type="Node"]
 script = ExtResource("1_0s7ei")
 
 [node name="MaximizeSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_jusdh")
+volume_db = -5.0
 
 [node name="MinimizeSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ucdnb")
+volume_db = -5.0
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xtb2a")
+volume_db = -5.0
