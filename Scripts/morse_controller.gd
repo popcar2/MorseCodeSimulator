@@ -78,11 +78,13 @@ func reset_label():
 func _hide_panel_toggled(toggled: bool):
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_trans(Tween.TRANS_QUINT)
 	if !toggled:
-		tween.tween_property(%'Bottom Panels', "position:y", 0, 1)
+		tween.tween_property(%'Bottom Panels', "position:y", 0, 0.65)
+		SoundManager.play_maximize_sfx()
 	else:
-		tween.tween_property(%'Bottom Panels', "position:y", 230, 1)
+		tween.tween_property(%'Bottom Panels', "position:y", 230, 0.65)
+		SoundManager.play_minimize_sfx()
 
 func _on_play_morse_button_toggled(_toggled: bool):
 	if is_playing_back:
@@ -115,10 +117,10 @@ func _on_play_morse_button_toggled(_toggled: bool):
 			await get_tree().create_timer(0.05).timeout
 		elif c == ' ':
 			word_count += 1
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(0.2).timeout
 		elif c == '|':
 			space_count += 1
-			await get_tree().create_timer(0.4).timeout
+			await get_tree().create_timer(0.6).timeout
 	is_playing_back = false
 	morse_label.text = HelperFunctions.strip_bbcode(morse_label.text)
 	normal_label.text = HelperFunctions.strip_bbcode(normal_label.text)

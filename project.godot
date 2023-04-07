@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 HelperFunctions="*res://Nodes/helper_functions.tscn"
 SettingsMenu="*res://Nodes/settings_menu.tscn"
+SoundManager="*res://Nodes/sound_manager.tscn"
 
 [display]
 

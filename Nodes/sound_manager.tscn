@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cscdux0e6nqtc"]
+
+[ext_resource type="Script" path="res://Scripts/sound_manager.gd" id="1_0s7ei"]
+[ext_resource type="AudioStream" uid="uid://mdnbecc12qba" path="res://SFX/maximize.ogg" id="1_jusdh"]
+[ext_resource type="AudioStream" uid="uid://bwqy50mttbdef" path="res://SFX/minimize.ogg" id="2_ucdnb"]
+
+[node name="Sound Manager" type="Node"]
+script = ExtResource("1_0s7ei")
+
+[node name="MaximizeSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_jusdh")
+
+[node name="MinimizeSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ucdnb")

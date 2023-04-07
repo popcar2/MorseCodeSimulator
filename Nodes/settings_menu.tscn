@@ -114,7 +114,7 @@ layout_mode = 2
 
 [node name="Letter Time Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container"]
 layout_mode = 2
-text = "New Letter Timer"
+text = "Letter Gap Timer"
 
 [node name="Letter Time Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container"]
 unique_name_in_owner = true
@@ -133,7 +133,7 @@ layout_mode = 2
 
 [node name="Word Time Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container"]
 layout_mode = 2
-text = "New Word Timer"
+text = "Word Gap Timer"
 
 [node name="Word Time Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container"]
 unique_name_in_owner = true
