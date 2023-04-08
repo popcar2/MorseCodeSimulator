@@ -29,6 +29,10 @@ func _input(event):
 		morse_button.set_pressed_no_signal(true)
 	elif event.is_action_released("press_morse"):
 		morse_button.emit_signal("button_up")
+	
+	if event.is_action_pressed("clear"):
+		SoundManager.play_click_sfx()
+		reset_label()
 
 func _on_morse_button_down():
 	if is_held:

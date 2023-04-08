@@ -116,3 +116,7 @@ func _on_playback_word_spinbox_value_changed(value):
 func _on_debug_mode_button_toggled(button_pressed):
 	debug_mode = button_pressed
 	debug_mode_changed.emit(debug_mode)
+
+func _on_background_panel_gui_input(event):
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
+		show_hide_menu()
