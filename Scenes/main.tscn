@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://qkn8vai1su0q"]
+[gd_scene load_steps=13 format=3 uid="uid://dp7a06guglgaq"]
 
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_1p657"]
 [ext_resource type="Script" path="res://Scripts/morse_controller.gd" id="1_dkpn7"]
 [ext_resource type="PackedScene" uid="uid://bwwmnr8prvcav" path="res://Nodes/morse_button.tscn" id="2_cmave"]
-[ext_resource type="AudioStream" uid="uid://dbdtq58qo4v2f" path="res://SFX/tone.wav" id="2_k2b0h"]
+[ext_resource type="AudioStream" uid="uid://vfnfynunymw1" path="res://SFX/tone.wav" id="2_k2b0h"]
 [ext_resource type="FontFile" uid="uid://bxy4r5jqiib5t" path="res://Fonts/morse.ttf" id="3_vom0s"]
 [ext_resource type="Texture2D" uid="uid://d2uc3s8tggxmr" path="res://Art/Morse Sheet.png" id="4_ds2fy"]
 [ext_resource type="Theme" uid="uid://cf75duugimbj7" path="res://Themes/CircularButton.tres" id="5_lqst7"]
@@ -49,6 +49,7 @@ one_shot = true
 
 [node name="Morse Audio" type="AudioStreamPlayer" parent="Morse Controller"]
 stream = ExtResource("2_k2b0h")
+volume_db = 10.0
 
 [node name="Morse Button" parent="." instance=ExtResource("2_cmave")]
 unique_name_in_owner = true
