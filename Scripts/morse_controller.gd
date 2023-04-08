@@ -81,11 +81,12 @@ func _hide_panel_toggled(toggled: bool):
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_QUINT)
+	var bottom_panels: Control = %'Bottom Panels'
 	if !toggled:
-		tween.tween_property(%'Bottom Panels', "position:y", 0, 0.65)
+		tween.tween_property(bottom_panels, "position:y", bottom_panels.position.y - 230, 0.65)
 		SoundManager.play_maximize_sfx()
 	else:
-		tween.tween_property(%'Bottom Panels', "position:y", 230, 0.65)
+		tween.tween_property(bottom_panels, "position:y", bottom_panels.position.y + 230, 0.65)
 		SoundManager.play_minimize_sfx()
 
 func _on_play_morse_button_toggled(_toggled: bool):
