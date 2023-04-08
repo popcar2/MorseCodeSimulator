@@ -9,10 +9,10 @@ var debug_mode: bool = false
 var long_press_time: float = 0.15
 
 # TODO: Make options for these variables and hook it up with morse_controller
-var playback_dit_time: float = 0.05
-var playback_dah_time: float = 0.15
-var playback_space_time: float = 0.2
-var playback_word_time: float = 0.6
+@onready var playback_dit_time: float = %'Playback Dit Spinbox'.value
+@onready var playback_dah_time: float = %'Playback Dah Spinbox'.value
+@onready var playback_space_time: float = %'Playback Space Spinbox'.value
+@onready var playback_word_time: float = %'Playback Word Spinbox'.value
 
 func _ready():
 	visible = false
@@ -72,6 +72,18 @@ func _on_long_press_time_spinbox_value_changed(value):
 
 func _on_close_button_pressed():
 	show_hide_menu()
+
+func _on_playback_dit_spinbox_value_changed(value):
+	playback_dit_time = value
+
+func _on_playback_dah_spinbox_value_changed(value):
+	playback_dah_time = value
+
+func _on_playback_space_spinbox_value_changed(value):
+	playback_space_time = value
+
+func _on_playback_word_spinbox_value_changed(value):
+	playback_word_time = value
 
 func _on_debug_mode_button_toggled(button_pressed):
 	debug_mode = button_pressed

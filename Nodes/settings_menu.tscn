@@ -169,6 +169,84 @@ select_all_on_focus = true
 [node name="HSeparator" type="HSeparator" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
 layout_mode = 2
 
+[node name="Playback Dit Time Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
+layout_mode = 2
+
+[node name="Playback Dit Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Dit Time Container"]
+layout_mode = 2
+text = "Playback Dit Timer"
+
+[node name="Playback Dit Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Dit Time Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 0.05
+max_value = 10.0
+step = 0.01
+value = 0.05
+alignment = 1
+select_all_on_focus = true
+
+[node name="Playback Dah Time Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
+layout_mode = 2
+
+[node name="Playback Dah Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Dah Time Container"]
+layout_mode = 2
+text = "Playback Dah Timer"
+
+[node name="Playback Dah Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Dah Time Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 0.05
+max_value = 10.0
+step = 0.01
+value = 0.15
+alignment = 1
+custom_arrow_step = 0.05
+select_all_on_focus = true
+
+[node name="Playback Space Time Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
+layout_mode = 2
+
+[node name="Playback Space Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Space Time Container"]
+layout_mode = 2
+text = "Playback Space Timer"
+
+[node name="Playback Space Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Space Time Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 0.05
+max_value = 10.0
+step = 0.01
+value = 0.2
+alignment = 1
+custom_arrow_step = 0.05
+select_all_on_focus = true
+
+[node name="Playback Word Time Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
+layout_mode = 2
+
+[node name="Playback Word Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Word Time Container"]
+layout_mode = 2
+text = "Playback Word Timer"
+
+[node name="Playback Word Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Word Time Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 0.05
+max_value = 10.0
+step = 0.01
+value = 0.5
+alignment = 1
+custom_arrow_step = 0.05
+select_all_on_focus = true
+
+[node name="HSeparator2" type="HSeparator" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
+layout_mode = 2
+
 [node name="Debug Mode Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
 layout_mode = 2
 
@@ -200,5 +278,9 @@ text = "X"
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container/Letter Time Spinbox" to="." method="_on_letter_time_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container/Word Time Spinbox" to="." method="_on_word_time_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container/Long Press Time Spinbox" to="." method="_on_long_press_time_spinbox_value_changed"]
+[connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Dit Time Container/Playback Dit Spinbox" to="." method="_on_playback_dit_spinbox_value_changed"]
+[connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Dah Time Container/Playback Dah Spinbox" to="." method="_on_playback_dah_spinbox_value_changed"]
+[connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Space Time Container/Playback Space Spinbox" to="." method="_on_playback_space_spinbox_value_changed"]
+[connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Word Time Container/Playback Word Spinbox" to="." method="_on_playback_word_spinbox_value_changed"]
 [connection signal="toggled" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Debug Mode Container/Debug Mode Button" to="." method="_on_debug_mode_button_toggled"]
 [connection signal="pressed" from="Settings Menu/Close Button" to="." method="_on_close_button_pressed"]

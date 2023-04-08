@@ -109,20 +109,20 @@ func _on_play_morse_button_toggled(_toggled: bool):
 		
 		if c == 'E':
 			morse_audio.play()
-			await get_tree().create_timer(0.05).timeout
+			await get_tree().create_timer(SettingsMenu.playback_dit_time).timeout
 			morse_audio.stop()
-			await get_tree().create_timer(0.05).timeout
+			await get_tree().create_timer(SettingsMenu.playback_dit_time).timeout
 		elif c == 'T':
 			morse_audio.play()
-			await get_tree().create_timer(0.15).timeout
+			await get_tree().create_timer(SettingsMenu.playback_dah_time).timeout
 			morse_audio.stop()
-			await get_tree().create_timer(0.05).timeout
+			await get_tree().create_timer(SettingsMenu.playback_dit_time).timeout
 		elif c == ' ':
 			word_count += 1
-			await get_tree().create_timer(0.2).timeout
+			await get_tree().create_timer(SettingsMenu.playback_space_time).timeout
 		elif c == '|':
 			space_count += 1
-			await get_tree().create_timer(0.6).timeout
+			await get_tree().create_timer(SettingsMenu.playback_word_time).timeout
 	is_playing_back = false
 	morse_label.text = HelperFunctions.strip_bbcode(morse_label.text)
 	normal_label.text = HelperFunctions.strip_bbcode(normal_label.text)
