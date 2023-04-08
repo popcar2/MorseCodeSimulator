@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://qkn8vai1su0q"]
+[gd_scene load_steps=13 format=3 uid="uid://qkn8vai1su0q"]
 
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_1p657"]
 [ext_resource type="Script" path="res://Scripts/morse_controller.gd" id="1_dkpn7"]
@@ -10,6 +10,14 @@
 [ext_resource type="Script" path="res://Scripts/reveal_on_click.gd" id="6_jn1kn"]
 [ext_resource type="AudioStream" uid="uid://bdt7a5782ltkn" path="res://SFX/paper.mp3" id="8_gy17g"]
 [ext_resource type="Script" path="res://Scripts/progress_bars.gd" id="8_ig5e7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_suj27"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 50
+border_width_top = 50
+border_width_right = 50
+border_width_bottom = 50
+border_color = Color(0.0627451, 0.772549, 0.584314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7co60"]
 bg_color = Color(0.0117647, 0.0313726, 0.0666667, 1)
@@ -117,6 +125,7 @@ offset_bottom = 219.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.65, 0.65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_suj27")
 script = ExtResource("6_jn1kn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bottom Panels/Cheat Sheet"]
@@ -212,3 +221,6 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 fit_content = true
+
+[connection signal="mouse_entered" from="Bottom Panels/Cheat Sheet" to="Bottom Panels/Cheat Sheet" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Bottom Panels/Cheat Sheet" to="Bottom Panels/Cheat Sheet" method="_on_mouse_exited"]
