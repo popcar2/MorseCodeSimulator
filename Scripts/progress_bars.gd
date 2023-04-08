@@ -25,6 +25,8 @@ func _on_morse_button_down():
 
 func _on_morse_button_up():
 	end_tween(long_press_progressbar, 0, Color.WHITE)
+	begin_tween(letter_progressbar, 1, Color.WHITE, SettingsMenu.letter_time, true)
+	begin_tween(word_progressbar, 2, Color.WHITE, SettingsMenu.word_time, true)
 
 func begin_tween(progressbar: ProgressBar, idx: int, color: Color, time: float, reset: bool = false):
 	if tweens[idx] and tweens[idx].is_running():

@@ -14,6 +14,15 @@ extends Node
 var is_held: bool = false
 var is_playing_back: bool = false
 
+@export var test : String = '' : 
+	get:
+		return test
+	set(value):
+		if value == '999':
+			test = value
+		else:
+			test = ''
+
 func _ready():
 	morse_button.connect("button_down", _on_morse_button_down)
 	morse_button.connect("button_up", _on_morse_button_up)
@@ -39,8 +48,8 @@ func _on_morse_button_down():
 		return
 	
 	held_timer.start(SettingsMenu.letter_time)
-	letter_timer.start(SettingsMenu.letter_time)
-	word_timer.start(SettingsMenu.word_time)
+	letter_timer.stop()
+	word_timer.stop()
 	morse_audio.play()
 	is_held = true
 	is_playing_back = false
@@ -50,6 +59,8 @@ func _on_morse_button_up():
 		morse_button.set_pressed_no_signal(false)
 		return
 	
+	letter_timer.start(SettingsMenu.letter_time)
+	word_timer.start(SettingsMenu.word_time)
 	# I don't know why but the button would not be pressed using inputkeys
 	# so I turned it into a toggle button and set pressed to false when released.
 	morse_button.set_pressed_no_signal(false)

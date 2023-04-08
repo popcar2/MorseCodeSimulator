@@ -49,6 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Settings" type="Panel" parent="Settings Menu/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Settings"]
@@ -118,7 +119,6 @@ popup/item_4/text = "Very Fast"
 popup/item_4/id = 4
 
 [node name="Advanced" type="Panel" parent="Settings Menu/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Advanced"]
@@ -149,7 +149,7 @@ size_flags_horizontal = 10
 min_value = 0.1
 max_value = 10.0
 step = 0.01
-value = 0.5
+value = 0.25
 alignment = 1
 custom_arrow_step = 0.1
 select_all_on_focus = true
@@ -168,7 +168,7 @@ size_flags_horizontal = 10
 min_value = 0.1
 max_value = 10.0
 step = 0.01
-value = 1.0
+value = 0.5
 alignment = 1
 custom_arrow_step = 0.1
 select_all_on_focus = true
@@ -246,7 +246,7 @@ size_flags_horizontal = 10
 min_value = 0.01
 max_value = 10.0
 step = 0.01
-value = 0.2
+value = 0.15
 alignment = 1
 custom_arrow_step = 0.05
 select_all_on_focus = true
@@ -265,7 +265,7 @@ size_flags_horizontal = 10
 min_value = 0.01
 max_value = 10.0
 step = 0.01
-value = 0.5
+value = 0.35
 alignment = 1
 custom_arrow_step = 0.05
 select_all_on_focus = true

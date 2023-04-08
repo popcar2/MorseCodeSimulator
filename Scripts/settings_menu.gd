@@ -49,45 +49,45 @@ func _on_morse_speed_option_item_selected(index):
 		%'Word Time Spinbox'.value = 3
 		%'Long Press Time Spinbox'.value = 0.15
 	elif morse_speed == 2:
-		%'Letter Time Spinbox'.value = 1
-		%'Word Time Spinbox'.value = 2
-		%'Long Press Time Spinbox'.value = 0.15
-	elif morse_speed == 3:
 		%'Letter Time Spinbox'.value = 0.5
 		%'Word Time Spinbox'.value = 1
 		%'Long Press Time Spinbox'.value = 0.15
+	elif morse_speed == 3:
+		%'Letter Time Spinbox'.value = 0.25
+		%'Word Time Spinbox'.value = 0.5
+		%'Long Press Time Spinbox'.value = 0.15
 	elif morse_speed == 4:
-		%'Letter Time Spinbox'.value = 0.3
-		%'Word Time Spinbox'.value = 0.75
-		%'Long Press Time Spinbox'.value = 0.10
+		%'Letter Time Spinbox'.value = 0.15
+		%'Word Time Spinbox'.value = 0.35
+		%'Long Press Time Spinbox'.value = 0.15
 
 func _on_morse_playback_option_item_selected(index):
 	playback_speed = index
 	if playback_speed == 0:
-		%'Playback Dit Spinbox'.value = 0.2
-		%'Playback Dah Spinbox'.value = 0.6
-		%'Playback Letter Spinbox'.value = 1
-		%'Playback Word Spinbox'.value = 2.5
+		%'Playback Dit Spinbox'.value = 0.15
+		%'Playback Dah Spinbox'.value = 0.45
+		%'Playback Letter Spinbox'.value = 0.45
+		%'Playback Word Spinbox'.value = 1.05
 	elif playback_speed == 1:
-		%'Playback Dit Spinbox'.value = 0.1
-		%'Playback Dah Spinbox'.value = 0.3
-		%'Playback Letter Spinbox'.value = 0.5
-		%'Playback Word Spinbox'.value = 1.25
+		%'Playback Dit Spinbox'.value = 0.10
+		%'Playback Dah Spinbox'.value = 0.30
+		%'Playback Letter Spinbox'.value = 0.30
+		%'Playback Word Spinbox'.value = 0.70
 	elif playback_speed == 2:
-		%'Playback Dit Spinbox'.value = 0.07
-		%'Playback Dah Spinbox'.value = 0.21
-		%'Playback Letter Spinbox'.value = 0.35
-		%'Playback Word Spinbox'.value = 1
+		%'Playback Dit Spinbox'.value = 0.08
+		%'Playback Dah Spinbox'.value = 0.24
+		%'Playback Letter Spinbox'.value = 0.24
+		%'Playback Word Spinbox'.value = 0.56
 	elif playback_speed == 3:
 		%'Playback Dit Spinbox'.value = 0.05
 		%'Playback Dah Spinbox'.value = 0.15
-		%'Playback Letter Spinbox'.value = 0.20
-		%'Playback Word Spinbox'.value = 0.5
+		%'Playback Letter Spinbox'.value = 0.15
+		%'Playback Word Spinbox'.value = 0.35
 	elif playback_speed == 4:
 		%'Playback Dit Spinbox'.value = 0.04
 		%'Playback Dah Spinbox'.value = 0.12
-		%'Playback Letter Spinbox'.value = 0.15
-		%'Playback Word Spinbox'.value = 0.30
+		%'Playback Letter Spinbox'.value = 0.12
+		%'Playback Word Spinbox'.value = 0.28
 
 func _on_letter_time_spinbox_value_changed(value):
 	letter_time = value
