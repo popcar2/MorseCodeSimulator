@@ -29,7 +29,6 @@ func _input(event):
 		morse_button.set_pressed_no_signal(true)
 	elif event.is_action_released("press_morse"):
 		morse_button.emit_signal("button_up")
-		morse_button.set_pressed_no_signal(false)
 
 func _on_morse_button_down():
 	if is_held:
@@ -44,7 +43,12 @@ func _on_morse_button_down():
 
 func _on_morse_button_up():
 	if !is_held:
+		morse_button.set_pressed_no_signal(false)
 		return
+	
+	# I don't know why but the button would not be pressed using inputkeys
+	# so I turned it into a toggle button and set pressed to false when released.
+	morse_button.set_pressed_no_signal(false)
 	
 	var time_left: float = held_timer.time_left
 	held_timer.stop()
