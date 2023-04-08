@@ -15,4 +15,5 @@ func play_minimize_sfx():
 	minimizeSFX.play()
 
 func play_click_sfx():
+	clickSFX.pitch_scale = randf_range(0.9, 1.1)
 	clickSFX.play()

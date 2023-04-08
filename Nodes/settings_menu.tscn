@@ -232,14 +232,14 @@ alignment = 1
 custom_arrow_step = 0.05
 select_all_on_focus = true
 
-[node name="Playback Space Time Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
+[node name="Playback Letter Time Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
 layout_mode = 2
 
-[node name="Playback Space Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Space Time Container"]
+[node name="Playback Letter Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Letter Time Container"]
 layout_mode = 2
-text = "Playback Space Timer"
+text = "Playback Letter Timer"
 
-[node name="Playback Space Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Space Time Container"]
+[node name="Playback Letter Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Letter Time Container"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
@@ -307,7 +307,7 @@ text = "X"
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container/Long Press Time Spinbox" to="." method="_on_long_press_time_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Dit Time Container/Playback Dit Spinbox" to="." method="_on_playback_dit_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Dah Time Container/Playback Dah Spinbox" to="." method="_on_playback_dah_spinbox_value_changed"]
-[connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Space Time Container/Playback Space Spinbox" to="." method="_on_playback_space_spinbox_value_changed"]
+[connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Letter Time Container/Playback Letter Spinbox" to="." method="_on_playback_letter_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Word Time Container/Playback Word Spinbox" to="." method="_on_playback_word_spinbox_value_changed"]
 [connection signal="toggled" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Debug Mode Container/Debug Mode Button" to="." method="_on_debug_mode_button_toggled"]
 [connection signal="pressed" from="Settings Menu/Close Button" to="." method="_on_close_button_pressed"]

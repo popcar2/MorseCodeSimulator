@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dp7a06guglgaq"]
+[gd_scene load_steps=15 format=3 uid="uid://dp7a06guglgaq"]
 
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_1p657"]
 [ext_resource type="Script" path="res://Scripts/morse_controller.gd" id="1_dkpn7"]
@@ -6,16 +6,15 @@
 [ext_resource type="FontFile" uid="uid://bxy4r5jqiib5t" path="res://Fonts/morse.ttf" id="3_vom0s"]
 [ext_resource type="Texture2D" uid="uid://d2uc3s8tggxmr" path="res://Art/Morse Sheet.png" id="4_ds2fy"]
 [ext_resource type="Theme" uid="uid://cf75duugimbj7" path="res://Themes/CircularButton.tres" id="5_lqst7"]
+[ext_resource type="Script" path="res://Scripts/settings_button.gd" id="5_vof65"]
 [ext_resource type="Script" path="res://Scripts/reveal_on_click.gd" id="6_jn1kn"]
 [ext_resource type="AudioStream" uid="uid://bdt7a5782ltkn" path="res://SFX/paper.mp3" id="8_gy17g"]
 [ext_resource type="Script" path="res://Scripts/progress_bars.gd" id="8_ig5e7"]
+[ext_resource type="Texture2D" uid="uid://bl2vfqboto37n" path="res://Art/cog.png" id="10_mgxxr"]
+[ext_resource type="Theme" uid="uid://bqww8sf32ya83" path="res://Themes/RoundedTopButton.tres" id="11_em8br"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_suj27"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 50
-border_width_top = 50
-border_width_right = 50
-border_width_bottom = 50
 border_color = Color(0.0627451, 0.772549, 0.584314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7co60"]
@@ -50,6 +49,18 @@ one_shot = true
 stream = ExtResource("2_k2b0h")
 volume_db = 10.0
 
+[node name="Settings Button" type="Button" parent="." groups=["button click"]]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 74.0
+offset_bottom = 74.0
+focus_mode = 0
+icon = ExtResource("10_mgxxr")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("5_vof65")
+
 [node name="Morse Button" type="Button" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -79,10 +90,10 @@ script = ExtResource("8_ig5e7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ProgressBars"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 440.0
-offset_bottom = 120.0
+offset_left = 20.0
+offset_top = 175.0
+offset_right = 420.0
+offset_bottom = 273.0
 
 [node name="LongPressProgressBar" type="ProgressBar" parent="ProgressBars/VBoxContainer"]
 unique_name_in_owner = true
@@ -118,10 +129,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -397.0
-offset_top = -629.0
-offset_right = 202.0
-offset_bottom = 219.0
+offset_left = -403.0
+offset_top = -633.0
+offset_right = 196.0
+offset_bottom = 215.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.65, 0.65)
@@ -137,15 +148,18 @@ stream = ExtResource("8_gy17g")
 
 [node name="Panel Buttons" type="HBoxContainer" parent="Bottom Panels"]
 layout_mode = 0
+offset_left = 10.0
 offset_top = 367.0
-offset_right = 200.0
+offset_right = 223.0
 offset_bottom = 407.0
+theme_override_constants/separation = 10
 
 [node name="Hide Button" type="Button" parent="Bottom Panels/Panel Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+theme = ExtResource("11_em8br")
 theme_override_font_sizes/font_size = 17
 toggle_mode = true
 text = "Hide"
@@ -155,6 +169,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+theme = ExtResource("11_em8br")
 theme_override_font_sizes/font_size = 17
 toggle_mode = true
 text = "Play"
@@ -164,6 +179,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+theme = ExtResource("11_em8br")
 theme_override_font_sizes/font_size = 17
 text = "Clear"
 
@@ -222,5 +238,6 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 fit_content = true
 
+[connection signal="pressed" from="Settings Button" to="Settings Button" method="_on_pressed"]
 [connection signal="mouse_entered" from="Bottom Panels/Cheat Sheet" to="Bottom Panels/Cheat Sheet" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Bottom Panels/Cheat Sheet" to="Bottom Panels/Cheat Sheet" method="_on_mouse_exited"]

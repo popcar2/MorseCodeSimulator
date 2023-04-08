@@ -124,7 +124,7 @@ func _on_play_morse_button_toggled(_toggled: bool):
 			await get_tree().create_timer(SettingsMenu.playback_dit_time).timeout
 		elif c == ' ':
 			word_count += 1
-			await get_tree().create_timer(SettingsMenu.playback_space_time).timeout
+			await get_tree().create_timer(SettingsMenu.playback_letter_time).timeout
 		elif c == '|':
 			space_count += 1
 			await get_tree().create_timer(SettingsMenu.playback_word_time).timeout
