@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dp7a06guglgaq"]
+[gd_scene load_steps=17 format=3 uid="uid://dp7a06guglgaq"]
 
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_1p657"]
 [ext_resource type="Script" path="res://Scripts/morse_controller.gd" id="1_dkpn7"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/progress_bars.gd" id="8_ig5e7"]
 [ext_resource type="Texture2D" uid="uid://bl2vfqboto37n" path="res://Art/cog.png" id="10_mgxxr"]
 [ext_resource type="Theme" uid="uid://bqww8sf32ya83" path="res://Themes/RoundedTopButton.tres" id="11_em8br"]
+[ext_resource type="Script" path="res://Scripts/deselect_outside_click.gd" id="13_ry7g3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_suj27"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -19,6 +20,8 @@ border_color = Color(0.0627451, 0.772549, 0.584314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7co60"]
 bg_color = Color(0.0117647, 0.0313726, 0.0666667, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5erc"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -238,6 +241,26 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 fit_content = true
 
+[node name="TextEdit" type="TextEdit" parent="Bottom Panels/PanelContainer/VSplitContainer/Plaintext Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 3.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r5erc")
+placeholder_text = "Type here to translate..."
+wrap_mode = 1
+script = ExtResource("13_ry7g3")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="Settings Button" to="Settings Button" method="_on_pressed"]
 [connection signal="mouse_entered" from="Bottom Panels/Cheat Sheet" to="Bottom Panels/Cheat Sheet" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Bottom Panels/Cheat Sheet" to="Bottom Panels/Cheat Sheet" method="_on_mouse_exited"]
+[connection signal="text_changed" from="Bottom Panels/PanelContainer/VSplitContainer/Plaintext Panel/TextEdit" to="Morse Controller" method="_on_text_edit_text_changed"]
