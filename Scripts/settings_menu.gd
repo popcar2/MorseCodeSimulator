@@ -9,6 +9,7 @@ var debug_mode: bool = false
 var long_press_time: float = 0.15
 
 # TODO: Make options for these variables and hook it up with morse_controller
+@onready var playback_speed: int = %'Morse Playback Option'.selected
 @onready var playback_dit_time: float = %'Playback Dit Spinbox'.value
 @onready var playback_dah_time: float = %'Playback Dah Spinbox'.value
 @onready var playback_space_time: float = %'Playback Space Spinbox'.value
@@ -60,6 +61,34 @@ func _on_morse_speed_option_item_selected(index):
 		%'Letter Time Spinbox'.value = 0.3
 		%'Word Time Spinbox'.value = 0.75
 		%'Long Press Time Spinbox'.value = 0.10
+
+func _on_morse_playback_option_item_selected(index):
+	playback_speed = index
+	if playback_speed == 0:
+		%'Playback Dit Spinbox'.value = 0.2
+		%'Playback Dah Spinbox'.value = 0.6
+		%'Playback Space Spinbox'.value = 1
+		%'Playback Word Spinbox'.value = 2.5
+	elif playback_speed == 1:
+		%'Playback Dit Spinbox'.value = 0.1
+		%'Playback Dah Spinbox'.value = 0.3
+		%'Playback Space Spinbox'.value = 0.5
+		%'Playback Word Spinbox'.value = 1.25
+	elif playback_speed == 2:
+		%'Playback Dit Spinbox'.value = 0.07
+		%'Playback Dah Spinbox'.value = 0.21
+		%'Playback Space Spinbox'.value = 0.35
+		%'Playback Word Spinbox'.value = 1
+	elif playback_speed == 3:
+		%'Playback Dit Spinbox'.value = 0.05
+		%'Playback Dah Spinbox'.value = 0.15
+		%'Playback Space Spinbox'.value = 0.20
+		%'Playback Word Spinbox'.value = 0.5
+	elif playback_speed == 4:
+		%'Playback Dit Spinbox'.value = 0.04
+		%'Playback Dah Spinbox'.value = 0.12
+		%'Playback Space Spinbox'.value = 0.15
+		%'Playback Word Spinbox'.value = 0.30
 
 func _on_letter_time_spinbox_value_changed(value):
 	letter_time = value
