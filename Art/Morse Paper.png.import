@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2uc3s8tggxmr"
-path="res://.godot/imported/Morse Sheet.png-0d3b8e44c020b9c6bf581531a466d09e.ctex"
+uid="uid://di8estpu74bcx"
+path="res://.godot/imported/Morse Paper.png-3c738d870865ef010313e3cecceb258e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Morse Sheet.png"
-dest_files=["res://.godot/imported/Morse Sheet.png-0d3b8e44c020b9c6bf581531a466d09e.ctex"]
+source_file="res://Art/Morse Paper.png"
+dest_files=["res://.godot/imported/Morse Paper.png-3c738d870865ef010313e3cecceb258e.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://duew5kn8un3rv"]
+[gd_scene load_steps=8 format=3 uid="uid://duew5kn8un3rv"]
 
 [ext_resource type="Script" path="res://Scripts/settings_menu.gd" id="1_btk2r"]
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_xid6k"]
@@ -7,12 +7,14 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qwin"]
 bg_color = Color(0, 0, 0, 0.294118)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tog7p"]
-bg_color = Color(0.00596114, 0.0144457, 0.0359816, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lf3te"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_drwtm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xv5xb"]
+bg_color = Color(0.0509804, 0.0980392, 0.168627, 1)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Settings Menu Control" type="CanvasLayer"]
 script = ExtResource("1_btk2r")
@@ -38,7 +40,7 @@ offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xid6k")
-theme_override_styles/panel = SubResource("StyleBoxFlat_tog7p")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lf3te")
 
 [node name="TabContainer" type="TabContainer" parent="Settings Menu"]
 layout_mode = 1
@@ -47,9 +49,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_drwtm")
 
 [node name="Settings" type="Panel" parent="Settings Menu/TabContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xv5xb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Settings"]
 layout_mode = 1
@@ -122,6 +126,7 @@ popup/item_4/id = 4
 [node name="Advanced" type="Panel" parent="Settings Menu/TabContainer"]
 visible = false
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xv5xb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Advanced"]
 layout_mode = 1
@@ -301,6 +306,20 @@ focus_mode = 0
 theme = ExtResource("3_gghs3")
 theme_override_font_sizes/font_size = 14
 text = "X"
+
+[node name="Credits Label" type="Label" parent="Settings Menu"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -34.0
+offset_right = 200.0
+offset_bottom = -5.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.784314)
+theme_override_font_sizes/font_size = 16
+text = "Created by popcar2 :)"
 
 [connection signal="gui_input" from="Background Panel" to="." method="_on_background_panel_gui_input"]
 [connection signal="item_selected" from="Settings Menu/TabContainer/Settings/VBoxContainer/Morse Speed Container/Morse Speed Option" to="." method="_on_morse_speed_option_item_selected"]

@@ -11,6 +11,9 @@ extends Node
 @onready var letter_timer: Timer = $'Letter Timer'
 @onready var morse_audio: AudioStreamPlayer = $'Morse Audio'
 @onready var text_edit: TextEdit = %'TextEdit'
+@onready var morse_panel: Panel = %'Morse Panel'
+
+@export var copied_to_clipboard_label: PackedScene
 
 var is_held: bool = false
 var is_playing_back: bool = false
@@ -161,3 +164,19 @@ func _on_text_edit_text_changed():
 	else:
 		morse_label.text = HelperFunctions.text_to_morse(text_edit.text)
 		normal_label.hide()
+
+func _on_morse_panel_mouse_entered():
+	morse_panel.self_modulate = Color('bdbdbd')
+
+
+func _on_morse_panel_mouse_exited():
+	morse_panel.self_modulate = Color.WHITE
+
+
+func _on_morse_panel_gui_input(event):
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
+		if !morse_label.text.is_empty():
+			DisplayServer.clipboard_set(morse_label.text.replace('E', '.').replace('T', '_').replace('|', '/'))
+		var temp_label: Label = copied_to_clipboard_label.instantiate()
+		temp_label.position = get_viewport().get_mouse_position() - temp_label.size / 2
+		add_sibling(temp_label)

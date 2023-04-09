@@ -1,16 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://dp7a06guglgaq"]
+[gd_scene load_steps=18 format=3 uid="uid://cu1evcqwaw481"]
 
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_1p657"]
 [ext_resource type="Script" path="res://Scripts/morse_controller.gd" id="1_dkpn7"]
 [ext_resource type="AudioStream" uid="uid://vfnfynunymw1" path="res://SFX/tone.wav" id="2_k2b0h"]
+[ext_resource type="PackedScene" uid="uid://2bbtpvkbfygt" path="res://Nodes/copied_to_clipboard_label.tscn" id="3_hbix7"]
 [ext_resource type="FontFile" uid="uid://bxy4r5jqiib5t" path="res://Fonts/morse.ttf" id="3_vom0s"]
-[ext_resource type="Texture2D" uid="uid://d2uc3s8tggxmr" path="res://Art/Morse Sheet.png" id="4_ds2fy"]
 [ext_resource type="Theme" uid="uid://cf75duugimbj7" path="res://Themes/CircularButton.tres" id="5_lqst7"]
 [ext_resource type="Script" path="res://Scripts/settings_button.gd" id="5_vof65"]
 [ext_resource type="Script" path="res://Scripts/reveal_on_click.gd" id="6_jn1kn"]
 [ext_resource type="AudioStream" uid="uid://bdt7a5782ltkn" path="res://SFX/paper.mp3" id="8_gy17g"]
 [ext_resource type="Script" path="res://Scripts/progress_bars.gd" id="8_ig5e7"]
-[ext_resource type="Texture2D" uid="uid://bl2vfqboto37n" path="res://Art/cog.png" id="10_mgxxr"]
+[ext_resource type="Texture2D" uid="uid://di8estpu74bcx" path="res://Art/Morse Paper.png" id="9_q0jgo"]
+[ext_resource type="Texture2D" uid="uid://cpsjqhdpn5tg2" path="res://Art/cog.png" id="10_mgxxr"]
 [ext_resource type="Theme" uid="uid://bqww8sf32ya83" path="res://Themes/RoundedTopButton.tres" id="11_em8br"]
 [ext_resource type="Script" path="res://Scripts/deselect_outside_click.gd" id="13_ry7g3"]
 
@@ -36,6 +37,7 @@ theme = ExtResource("1_1p657")
 [node name="Morse Controller" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_dkpn7")
+copied_to_clipboard_label = ExtResource("3_hbix7")
 
 [node name="Held Timer" type="Timer" parent="Morse Controller"]
 wait_time = 0.5
@@ -132,10 +134,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -403.0
-offset_top = -633.0
-offset_right = 196.0
-offset_bottom = 215.0
+offset_left = -405.0
+offset_top = -628.0
+offset_right = 192.0
+offset_bottom = 272.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.65, 0.65)
@@ -143,8 +145,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_suj27")
 script = ExtResource("6_jn1kn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bottom Panels/Cheat Sheet"]
-position = Vector2(299, 424)
-texture = ExtResource("4_ds2fy")
+position = Vector2(298, 450)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("9_q0jgo")
 
 [node name="Paper Click" type="AudioStreamPlayer" parent="Bottom Panels/Cheat Sheet"]
 stream = ExtResource("8_gy17g")
@@ -203,6 +206,7 @@ layout_mode = 2
 split_offset = -10
 
 [node name="Morse Panel" type="Panel" parent="Bottom Panels/PanelContainer/VSplitContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -218,6 +222,7 @@ offset_right = 3.0
 offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3_vom0s")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
@@ -265,4 +270,7 @@ script = ExtResource("13_ry7g3")
 [connection signal="pressed" from="Settings Button" to="Settings Button" method="_on_pressed"]
 [connection signal="mouse_entered" from="Bottom Panels/Cheat Sheet" to="Bottom Panels/Cheat Sheet" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Bottom Panels/Cheat Sheet" to="Bottom Panels/Cheat Sheet" method="_on_mouse_exited"]
+[connection signal="gui_input" from="Bottom Panels/PanelContainer/VSplitContainer/Morse Panel" to="Morse Controller" method="_on_morse_panel_gui_input"]
+[connection signal="mouse_entered" from="Bottom Panels/PanelContainer/VSplitContainer/Morse Panel" to="Morse Controller" method="_on_morse_panel_mouse_entered"]
+[connection signal="mouse_exited" from="Bottom Panels/PanelContainer/VSplitContainer/Morse Panel" to="Morse Controller" method="_on_morse_panel_mouse_exited"]
 [connection signal="text_changed" from="Bottom Panels/PanelContainer/VSplitContainer/Plaintext Panel/TextEdit" to="Morse Controller" method="_on_text_edit_text_changed"]

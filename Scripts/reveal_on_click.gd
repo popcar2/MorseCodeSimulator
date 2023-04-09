@@ -7,7 +7,7 @@ var revealed: bool = true
 func _ready():
 	panel_theme.border_color = Color('10c595')
 	panel_theme.border_width_left = 50
-	panel_theme.border_width_top = 50
+	panel_theme.border_width_top = 46
 	panel_theme.border_width_right = 50
 	panel_theme.border_width_bottom = 50
 	add_theme_stylebox_override('panel', panel_theme)

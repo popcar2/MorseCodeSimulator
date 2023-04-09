@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://2bbtpvkbfygt"]
+
+[ext_resource type="Script" path="res://Scripts/ascend_then_free.gd" id="1_80k82"]
+
+[node name="Copied To Clipboard Label" type="Label"]
+z_index = 1
+offset_left = -78.0
+offset_top = -13.0
+offset_right = 78.0
+offset_bottom = 13.0
+size_flags_horizontal = 4
+text = "Copied to clipboard!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_80k82")
