@@ -25,6 +25,9 @@ func _ready():
 	play_morse_button.connect("toggled", _on_play_morse_button_toggled)
 
 func _input(event):
+	if text_edit.is_focused:
+		return
+	
 	if event.is_action_pressed("press_morse"):
 		morse_button.emit_signal("button_down")
 		morse_button.set_pressed_no_signal(true)
@@ -46,6 +49,7 @@ func _on_morse_button_down():
 	is_held = true
 	is_playing_back = false
 	text_edit.hide()
+	normal_label.show()
 
 func _on_morse_button_up():
 	if !is_held:
@@ -90,6 +94,7 @@ func reset_label():
 	is_playing_back = false
 	text_edit.clear()
 	text_edit.show()
+	normal_label.show()
 
 func _hide_panel_toggled(toggled: bool):
 	var tween: Tween = create_tween()
@@ -152,5 +157,7 @@ func reset_play_morse_button():
 func _on_text_edit_text_changed():
 	if text_edit.text.is_empty():
 		normal_label.show()
+		morse_label.text = ''
 	else:
+		morse_label.text = HelperFunctions.text_to_morse(text_edit.text)
 		normal_label.hide()

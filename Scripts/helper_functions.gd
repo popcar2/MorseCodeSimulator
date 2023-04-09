@@ -65,6 +65,66 @@ func morse_to_text(text: String):
 	
 	return translated_text
 
+func text_to_morse(text: String):
+	var translated_text = ''
+	for letter in text.to_upper():
+		match letter:
+			'A': translated_text += 'ET '
+			'B': translated_text += 'TEEE '
+			'C': translated_text += 'TETE '
+			'D': translated_text += 'TEE '
+			'E': translated_text += 'E '
+			'F': translated_text += 'EETE '
+			'G': translated_text += 'TTE '
+			'H': translated_text += 'EEEE '
+			'I': translated_text += 'EE '
+			'J': translated_text += 'ETTT '
+			'K': translated_text += 'TET '
+			'L': translated_text += 'ETEE '
+			'M': translated_text += 'TT '
+			'N': translated_text += 'TE '
+			'O': translated_text += 'TTT '
+			'P': translated_text += 'ETTE '
+			'Q': translated_text += 'TTET '
+			'R': translated_text += 'ETE '
+			'S': translated_text += 'EEE '
+			'T': translated_text += 'T '
+			'U': translated_text += 'EET '
+			'V': translated_text += 'EEET '
+			'W': translated_text += 'ETT '
+			'X': translated_text += 'TEET '
+			'Y': translated_text += 'TETT '
+			'Z': translated_text += 'TTEE '
+			
+			'1': translated_text += 'ETTTT '
+			'2': translated_text += 'EETTT '
+			'3': translated_text += 'EEETT '
+			'4': translated_text += 'EEEET '
+			'5': translated_text += 'EEEEE '
+			'6': translated_text += 'TEEEE '
+			'7': translated_text += 'TTEEE '
+			'8': translated_text += 'TTTEE '
+			'9': translated_text += 'TTTTE '
+			'0': translated_text += 'TTTTT '
+			
+			'.': translated_text += 'ETETET '
+			',': translated_text += 'TTEETT '
+			'?': translated_text += 'EETTEE '
+			'!': translated_text += 'TTTE '
+			':': translated_text += 'TTTEEE '
+			';': translated_text += 'TETETE '
+			'+': translated_text += 'ETETE '
+			'-': translated_text += 'TEEEET '
+			'=': translated_text += 'TEEET '
+			"'": translated_text += 'ETTTTE '
+			'/': translated_text += 'TEETE '
+			'"': translated_text += 'ETEETE '
+			'(': translated_text += 'TETTE '
+			')': translated_text += 'TETTET '
+			
+			' ': translated_text += '|'
+	return translated_text
+
 func highlight_specific_word(text: String, idx: int):
 	var split_text: PackedStringArray = text.split(' ')
 	var has_slash = split_text[idx].begins_with('|')

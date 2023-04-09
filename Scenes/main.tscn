@@ -193,12 +193,14 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -241.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7co60")
 
 [node name="VSplitContainer" type="VSplitContainer" parent="Bottom Panels/PanelContainer"]
 layout_mode = 2
+split_offset = -10
 
 [node name="Morse Panel" type="Panel" parent="Bottom Panels/PanelContainer/VSplitContainer"]
 layout_mode = 2
@@ -255,7 +257,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_r5erc")
-placeholder_text = "Type here to translate..."
+placeholder_text = "Type here to translate (Text > Morse)..."
 wrap_mode = 1
 script = ExtResource("13_ry7g3")
 

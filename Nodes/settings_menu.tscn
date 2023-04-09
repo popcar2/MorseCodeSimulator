@@ -49,7 +49,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Settings" type="Panel" parent="Settings Menu/TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Settings"]
@@ -78,6 +77,7 @@ unique_name_in_owner = true
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 10
+alignment = 1
 item_count = 5
 selected = 3
 fit_to_longest_item = false
@@ -104,6 +104,7 @@ unique_name_in_owner = true
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 10
+alignment = 1
 item_count = 5
 selected = 3
 fit_to_longest_item = false
@@ -119,6 +120,7 @@ popup/item_4/text = "Very Fast"
 popup/item_4/id = 4
 
 [node name="Advanced" type="Panel" parent="Settings Menu/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Advanced"]
