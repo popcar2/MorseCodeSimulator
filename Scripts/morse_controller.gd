@@ -175,6 +175,7 @@ func _on_morse_panel_mouse_exited():
 
 func _on_morse_panel_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
+		SoundManager.play_click_sfx()
 		if !morse_label.text.is_empty():
 			DisplayServer.clipboard_set(morse_label.text.replace('E', '.').replace('T', '_').replace('|', '/'))
 		var temp_label: Label = copied_to_clipboard_label.instantiate()

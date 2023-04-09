@@ -9,4 +9,5 @@ func _ready():
 	var tween2: Tween = create_tween()
 	tween2.set_trans(Tween.TRANS_CUBIC)
 	tween2.set_ease(Tween.EASE_OUT)
-	tween2.tween_property(self, 'modulate:a', 0, 1)
+	await tween2.tween_property(self, 'modulate:a', 0, 1).finished
+	queue_free()
