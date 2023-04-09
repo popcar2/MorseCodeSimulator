@@ -52,6 +52,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_drwtm")
 
 [node name="Settings" type="Panel" parent="Settings Menu/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xv5xb")
 
@@ -81,6 +82,7 @@ unique_name_in_owner = true
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_vertical = 4
 alignment = 1
 item_count = 5
 selected = 3
@@ -95,6 +97,10 @@ popup/item_3/text = "Fast"
 popup/item_3/id = 3
 popup/item_4/text = "Very Fast"
 popup/item_4/id = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
 
 [node name="Morse Playback Speed Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2
@@ -108,6 +114,7 @@ unique_name_in_owner = true
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_vertical = 4
 alignment = 1
 item_count = 5
 selected = 3
@@ -123,8 +130,30 @@ popup/item_3/id = 3
 popup/item_4/text = "Very Fast"
 popup/item_4/id = 4
 
+[node name="MarginContainer3" type="MarginContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="Audio Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Audio Volume Label" type="Label" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Audio Container"]
+layout_mode = 2
+text = "Audio Volume"
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Audio Container"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+
+[node name="Audio Volume Slider" type="HSlider" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Audio Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.5
+
 [node name="Advanced" type="Panel" parent="Settings Menu/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xv5xb")
 
@@ -142,12 +171,31 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
+[node name="Long Press Time Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
+layout_mode = 2
+
+[node name="Long Press Time Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container"]
+layout_mode = 2
+text = "Typing Dah Timer"
+
+[node name="Long Press Time Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+min_value = 0.05
+max_value = 10.0
+step = 0.01
+value = 0.15
+alignment = 1
+custom_arrow_step = 0.05
+select_all_on_focus = true
+
 [node name="Letter Time Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
 layout_mode = 2
 
 [node name="Letter Time Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container"]
 layout_mode = 2
-text = "Letter Gap Timer"
+text = "Typing Letter Timer"
 
 [node name="Letter Time Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container"]
 unique_name_in_owner = true
@@ -166,7 +214,7 @@ layout_mode = 2
 
 [node name="Word Time Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container"]
 layout_mode = 2
-text = "Word Gap Timer"
+text = "Typing Word Timer"
 
 [node name="Word Time Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container"]
 unique_name_in_owner = true
@@ -178,25 +226,6 @@ step = 0.01
 value = 0.5
 alignment = 1
 custom_arrow_step = 0.1
-select_all_on_focus = true
-
-[node name="Long Press Time Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
-layout_mode = 2
-
-[node name="Long Press Time Label" type="Label" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container"]
-layout_mode = 2
-text = "Dah Timer"
-
-[node name="Long Press Time Spinbox" type="SpinBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-min_value = 0.05
-max_value = 10.0
-step = 0.01
-value = 0.15
-alignment = 1
-custom_arrow_step = 0.05
 select_all_on_focus = true
 
 [node name="HSeparator" type="HSeparator" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
@@ -324,9 +353,11 @@ text = "Created by popcar2 :)"
 [connection signal="gui_input" from="Background Panel" to="." method="_on_background_panel_gui_input"]
 [connection signal="item_selected" from="Settings Menu/TabContainer/Settings/VBoxContainer/Morse Speed Container/Morse Speed Option" to="." method="_on_morse_speed_option_item_selected"]
 [connection signal="item_selected" from="Settings Menu/TabContainer/Settings/VBoxContainer/Morse Playback Speed Container/Morse Playback Option" to="." method="_on_morse_playback_option_item_selected"]
+[connection signal="drag_ended" from="Settings Menu/TabContainer/Settings/VBoxContainer/Audio Container/Audio Volume Slider" to="." method="_on_audio_volume_slider_drag_ended"]
+[connection signal="value_changed" from="Settings Menu/TabContainer/Settings/VBoxContainer/Audio Container/Audio Volume Slider" to="." method="_on_audio_volume_slider_value_changed"]
+[connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container/Long Press Time Spinbox" to="." method="_on_long_press_time_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container/Letter Time Spinbox" to="." method="_on_letter_time_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container/Word Time Spinbox" to="." method="_on_word_time_spinbox_value_changed"]
-[connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container/Long Press Time Spinbox" to="." method="_on_long_press_time_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Dit Time Container/Playback Dit Spinbox" to="." method="_on_playback_dit_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Dah Time Container/Playback Dah Spinbox" to="." method="_on_playback_dah_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Letter Time Container/Playback Letter Spinbox" to="." method="_on_playback_letter_spinbox_value_changed"]

@@ -166,12 +166,10 @@ func _on_text_edit_text_changed():
 		normal_label.hide()
 
 func _on_morse_panel_mouse_entered():
-	morse_panel.self_modulate = Color('bdbdbd')
-
+	morse_panel.self_modulate = Color('e1e1e1')
 
 func _on_morse_panel_mouse_exited():
 	morse_panel.self_modulate = Color.WHITE
-
 
 func _on_morse_panel_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:

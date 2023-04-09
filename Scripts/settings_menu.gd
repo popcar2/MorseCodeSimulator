@@ -120,3 +120,9 @@ func _on_debug_mode_button_toggled(button_pressed):
 func _on_background_panel_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
 		show_hide_menu()
+
+func _on_audio_volume_slider_drag_ended(_value_changed):
+	SoundManager.play_click_sfx()
+
+func _on_audio_volume_slider_value_changed(value):
+	AudioServer.set_bus_volume_db(0, linear_to_db(value * 2))
