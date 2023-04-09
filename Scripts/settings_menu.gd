@@ -41,12 +41,12 @@ func show_hide_menu():
 func _on_morse_speed_option_item_selected(index):
 	morse_speed = index
 	if morse_speed == 0:
-		%'Letter Time Spinbox'.value = 2.5
-		%'Word Time Spinbox'.value = 4
-		%'Long Press Time Spinbox'.value = 0.15
-	elif morse_speed == 1:
 		%'Letter Time Spinbox'.value = 2
 		%'Word Time Spinbox'.value = 3
+		%'Long Press Time Spinbox'.value = 0.15
+	elif morse_speed == 1:
+		%'Letter Time Spinbox'.value = 1
+		%'Word Time Spinbox'.value = 1.5
 		%'Long Press Time Spinbox'.value = 0.15
 	elif morse_speed == 2:
 		%'Letter Time Spinbox'.value = 0.5
@@ -59,7 +59,7 @@ func _on_morse_speed_option_item_selected(index):
 	elif morse_speed == 4:
 		%'Letter Time Spinbox'.value = 0.15
 		%'Word Time Spinbox'.value = 0.35
-		%'Long Press Time Spinbox'.value = 0.15
+		%'Long Press Time Spinbox'.value = 0.10
 
 func _on_morse_playback_option_item_selected(index):
 	playback_speed = index

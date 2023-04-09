@@ -20,8 +20,6 @@ func _ready():
 
 func _on_morse_button_down():
 	begin_tween(long_press_progressbar, 0, Color.RED, SettingsMenu.long_press_time)
-	begin_tween(letter_progressbar, 1, Color.WHITE, SettingsMenu.letter_time, true)
-	begin_tween(word_progressbar, 2, Color.WHITE, SettingsMenu.word_time, true)
 
 func _on_morse_button_up():
 	end_tween(long_press_progressbar, 0, Color.WHITE)
