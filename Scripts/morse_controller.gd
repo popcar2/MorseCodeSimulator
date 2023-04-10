@@ -82,6 +82,13 @@ func _on_morse_button_up():
 func _on_word_timer_timeout():
 	if !is_held:
 		morse_label.text += '|'
+		
+		# Delete last word if the current word is eight dots
+		if morse_label.text.ends_with('|EEEEEEEE |'):
+			morse_label.text = '|'.join(morse_label.text.split('|').slice(0, -3))
+			if !morse_label.text.is_empty():
+				morse_label.text += '|'
+			normal_label.text = HelperFunctions.morse_to_text(morse_label.text)
 
 func _on_letter_timer_timeout():
 	if is_held:

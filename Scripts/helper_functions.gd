@@ -1,5 +1,5 @@
 extends Node
-func morse_to_text(text: String):
+func morse_to_text(text: String) -> String:
 	var split_text: PackedStringArray = text.split(' ')
 	var translated_text: String = ''
 	for letter in split_text:
@@ -64,11 +64,14 @@ func morse_to_text(text: String):
 			'ETEEE': translated_text += '&'
 			'ETTETE': translated_text += '@'
 			
+			'EEEEEEEE': translated_text += '␡'
+			'': pass # In case of an empty letter, such as when deleting a word
+			
 			_: translated_text += '#'
 	
 	return translated_text
 
-func text_to_morse(text: String):
+func text_to_morse(text: String) -> String:
 	var translated_text = ''
 	for letter in text.to_upper():
 		match letter:
@@ -130,7 +133,7 @@ func text_to_morse(text: String):
 			' ': translated_text += '|'
 	return translated_text
 
-func highlight_specific_word(text: String, idx: int):
+func highlight_specific_word(text: String, idx: int) -> String:
 	var split_text: PackedStringArray = text.split(' ')
 	var has_slash = split_text[idx].begins_with('|')
 	
@@ -144,7 +147,7 @@ func highlight_specific_word(text: String, idx: int):
 	
 	return ' '.join(split_text)
 
-func highlight_specific_letter(text: String, idx: int):
+func highlight_specific_letter(text: String, idx: int) -> String:
 	if idx < 0:
 		text = text.insert(text.length() - idx - 2, "[color=red]")
 		text = text.insert(text.length() - idx + 1, '[/color]')
@@ -157,3 +160,7 @@ func strip_bbcode(text: String):
 	var regex = RegEx.new()
 	regex.compile("\\[.*?\\]")
 	return regex.sub(text, "", true)
+
+func remove_last_word(text: String):
+	var split_text: PackedStringArray = text.split('|')
+	split_text = split_text.slice(0, -2)
