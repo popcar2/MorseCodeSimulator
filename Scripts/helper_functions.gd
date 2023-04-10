@@ -60,6 +60,7 @@ func morse_to_text(text: String):
 			'ETEETE': translated_text += '"'
 			'TETTE': translated_text += '('
 			'TETTET': translated_text += ')'
+			'ETEEE': translated_text += '&'
 			
 			_: translated_text += '☐'
 	
@@ -121,6 +122,7 @@ func text_to_morse(text: String):
 			'"': translated_text += 'ETEETE '
 			'(': translated_text += 'TETTE '
 			')': translated_text += 'TETTET '
+			'&': translated_text += 'ETEEE'
 			
 			' ': translated_text += '|'
 	return translated_text

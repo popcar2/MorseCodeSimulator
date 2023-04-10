@@ -52,7 +52,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_drwtm")
 
 [node name="Settings" type="Panel" parent="Settings Menu/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xv5xb")
 
@@ -154,6 +153,7 @@ step = 0.01
 value = 0.5
 
 [node name="Advanced" type="Panel" parent="Settings Menu/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xv5xb")
 
