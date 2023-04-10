@@ -50,6 +50,7 @@ func morse_to_text(text: String):
 			'TTEETT': translated_text += ','
 			'EETTEE': translated_text += '?'
 			'TTTE': translated_text += '!'
+			'TETETT': translated_text += '!' #Alternate way of doing !
 			'TTTEEE': translated_text += ':'
 			'TETETE': translated_text += ';'
 			'ETETE': translated_text += '+'
@@ -61,8 +62,9 @@ func morse_to_text(text: String):
 			'TETTE': translated_text += '('
 			'TETTET': translated_text += ')'
 			'ETEEE': translated_text += '&'
+			'ETTETE': translated_text += '@'
 			
-			_: translated_text += '☐'
+			_: translated_text += '#'
 	
 	return translated_text
 
@@ -111,7 +113,7 @@ func text_to_morse(text: String):
 			'.': translated_text += 'ETETET '
 			',': translated_text += 'TTEETT '
 			'?': translated_text += 'EETTEE '
-			'!': translated_text += 'TTTE '
+			'!': translated_text += 'TETETT '
 			':': translated_text += 'TTTEEE '
 			';': translated_text += 'TETETE '
 			'+': translated_text += 'ETETE '
@@ -122,7 +124,8 @@ func text_to_morse(text: String):
 			'"': translated_text += 'ETEETE '
 			'(': translated_text += 'TETTE '
 			')': translated_text += 'TETTET '
-			'&': translated_text += 'ETEEE'
+			'&': translated_text += 'ETEEE '
+			'@': translated_text += 'ETTETE '
 			
 			' ': translated_text += '|'
 	return translated_text

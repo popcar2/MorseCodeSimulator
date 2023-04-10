@@ -61,7 +61,8 @@ func _on_morse_button_up():
 	
 	letter_timer.start(SettingsMenu.letter_time)
 	word_timer.start(SettingsMenu.word_time)
-	# I don't know why but the button would not be pressed using inputkeys
+	
+	# The button would not stay pressed using inputkeys
 	# so I turned it into a toggle button and set pressed to false when released.
 	morse_button.set_pressed_no_signal(false)
 	
