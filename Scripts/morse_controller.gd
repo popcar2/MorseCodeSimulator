@@ -88,6 +88,8 @@ func _on_word_timer_timeout():
 			morse_label.text = '|'.join(morse_label.text.split('|').slice(0, -3))
 			if !morse_label.text.is_empty():
 				morse_label.text += '|'
+			else:
+				text_edit.visible = true
 			normal_label.text = HelperFunctions.morse_to_text(morse_label.text)
 
 func _on_letter_timer_timeout():
