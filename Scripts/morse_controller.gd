@@ -48,11 +48,12 @@ func _on_morse_button_down():
 	held_timer.start(SettingsMenu.letter_time)
 	letter_timer.stop()
 	word_timer.stop()
-	morse_audio.play()
 	is_held = true
 	is_playing_back = false
 	text_edit.hide()
 	normal_label.show()
+	
+	morse_audio.play()
 
 func _on_morse_button_up():
 	if !is_held:
@@ -72,12 +73,13 @@ func _on_morse_button_up():
 		morse_label.text += 'E'
 	else:
 		morse_label.text += 'T'
-	morse_audio.stop()
 	is_held = false
 	
 	morse_label.text = HelperFunctions.highlight_specific_word(HelperFunctions.strip_bbcode(morse_label.text), -1)
 	normal_label.text = HelperFunctions.highlight_specific_letter(
 		HelperFunctions.morse_to_text(HelperFunctions.strip_bbcode(morse_label.text)), -1)
+	
+	morse_audio.stop()
 
 func _on_word_timer_timeout():
 	if !is_held:

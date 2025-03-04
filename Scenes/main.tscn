@@ -1,19 +1,19 @@
 [gd_scene load_steps=18 format=3 uid="uid://cu1evcqwaw481"]
 
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_1p657"]
-[ext_resource type="Script" path="res://Scripts/morse_controller.gd" id="1_dkpn7"]
-[ext_resource type="AudioStream" uid="uid://vfnfynunymw1" path="res://SFX/tone.wav" id="2_k2b0h"]
+[ext_resource type="Script" uid="uid://1p6f02yrtcj" path="res://Scripts/morse_controller.gd" id="1_dkpn7"]
 [ext_resource type="PackedScene" uid="uid://2bbtpvkbfygt" path="res://Nodes/copied_to_clipboard_label.tscn" id="3_hbix7"]
 [ext_resource type="FontFile" uid="uid://bxy4r5jqiib5t" path="res://Fonts/morse.ttf" id="3_vom0s"]
+[ext_resource type="AudioStream" uid="uid://ddbe3j2cyhrl" path="res://SFX/tone.wav" id="4_jkdf5"]
 [ext_resource type="Theme" uid="uid://cf75duugimbj7" path="res://Themes/CircularButton.tres" id="5_lqst7"]
-[ext_resource type="Script" path="res://Scripts/settings_button.gd" id="5_vof65"]
-[ext_resource type="Script" path="res://Scripts/reveal_on_click.gd" id="6_jn1kn"]
+[ext_resource type="Script" uid="uid://5x7m35j7naty" path="res://Scripts/settings_button.gd" id="5_vof65"]
+[ext_resource type="Script" uid="uid://brc6t4w6bgq4g" path="res://Scripts/reveal_on_click.gd" id="6_jn1kn"]
 [ext_resource type="AudioStream" uid="uid://bdt7a5782ltkn" path="res://SFX/paper.mp3" id="8_gy17g"]
-[ext_resource type="Script" path="res://Scripts/progress_bars.gd" id="8_ig5e7"]
+[ext_resource type="Script" uid="uid://catah15k6snx2" path="res://Scripts/progress_bars.gd" id="8_ig5e7"]
 [ext_resource type="Texture2D" uid="uid://di8estpu74bcx" path="res://Art/Morse Paper.png" id="9_q0jgo"]
 [ext_resource type="Texture2D" uid="uid://cpsjqhdpn5tg2" path="res://Art/cog.png" id="10_mgxxr"]
 [ext_resource type="Theme" uid="uid://bqww8sf32ya83" path="res://Themes/RoundedTopButton.tres" id="11_em8br"]
-[ext_resource type="Script" path="res://Scripts/deselect_outside_click.gd" id="13_ry7g3"]
+[ext_resource type="Script" uid="uid://dan7lfq0kkwn3" path="res://Scripts/deselect_outside_click.gd" id="13_ry7g3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_suj27"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -51,8 +51,9 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Morse Audio" type="AudioStreamPlayer" parent="Morse Controller"]
-stream = ExtResource("2_k2b0h")
+stream = ExtResource("4_jkdf5")
 volume_db = 10.0
+pitch_scale = 0.9
 
 [node name="Settings Button" type="Button" parent="." groups=["button click"]]
 layout_mode = 1

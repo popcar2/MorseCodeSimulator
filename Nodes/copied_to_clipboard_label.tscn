@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://2bbtpvkbfygt"]
 
-[ext_resource type="Script" path="res://Scripts/ascend_then_free.gd" id="1_80k82"]
+[ext_resource type="Script" uid="uid://blrpoo33ted7h" path="res://Scripts/ascend_then_free.gd" id="1_80k82"]
 
 [node name="Copied To Clipboard Label" type="Label"]
 z_index = 1
