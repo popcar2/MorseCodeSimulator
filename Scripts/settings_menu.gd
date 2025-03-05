@@ -123,6 +123,9 @@ func _on_background_panel_gui_input(event):
 
 func _on_audio_volume_slider_drag_ended(_value_changed):
 	SoundManager.play_click_sfx()
+	%MorseSoundTest.stop()
 
 func _on_audio_volume_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(0, linear_to_db(value * 2))
+	if %MorseSoundTest.playing == false:
+		%MorseSoundTest.play()

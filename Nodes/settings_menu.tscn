@@ -1,15 +1,54 @@
-[gd_scene load_steps=8 format=3 uid="uid://duew5kn8un3rv"]
+[gd_scene load_steps=14 format=3 uid="uid://duew5kn8un3rv"]
 
 [ext_resource type="Script" uid="uid://c10r4jbiraidr" path="res://Scripts/settings_menu.gd" id="1_btk2r"]
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_xid6k"]
 [ext_resource type="Theme" uid="uid://cf75duugimbj7" path="res://Themes/CircularButton.tres" id="3_gghs3"]
+[ext_resource type="AudioStream" uid="uid://ddbe3j2cyhrl" path="res://SFX/tone.wav" id="3_hom7b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qwin"]
 bg_color = Color(0, 0, 0, 0.294118)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lf3te"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_drwtm"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0fgr"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.109804, 0.976471, 0.741176, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50ago"]
+bg_color = Color(0.0209396, 0.0498552, 0.0983145, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_50ago"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsul2"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.0509804, 0.603922, 0.454902, 1)
+border_width_bottom = 2
+border_color = Color(0.109804, 0.976471, 0.741176, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hom7b"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.0585444, 0.675182, 0.509846, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krsf2"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0, 0.152941, 0.129412, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xv5xb"]
 bg_color = Color(0.0509804, 0.0980392, 0.168627, 1)
@@ -49,11 +88,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_drwtm")
+theme_override_styles/tab_focus = SubResource("StyleBoxFlat_p0fgr")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_50ago")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_50ago")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_dsul2")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_hom7b")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_krsf2")
+current_tab = 0
 
 [node name="Settings" type="Panel" parent="Settings Menu/TabContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xv5xb")
+metadata/_tab_index = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Settings"]
 layout_mode = 1
@@ -83,9 +129,9 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 alignment = 1
-item_count = 5
 selected = 3
 fit_to_longest_item = false
+item_count = 5
 popup/item_0/text = "Very Slow"
 popup/item_0/id = 0
 popup/item_1/text = "Slow"
@@ -115,9 +161,9 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 alignment = 1
-item_count = 5
 selected = 3
 fit_to_longest_item = false
+item_count = 5
 popup/item_0/text = "Very Slow"
 popup/item_0/id = 0
 popup/item_1/text = "Slow"
@@ -148,14 +194,19 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-max_value = 1.0
+max_value = 0.6
 step = 0.01
 value = 0.5
+
+[node name="MorseSoundTest" type="AudioStreamPlayer" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Audio Container"]
+unique_name_in_owner = true
+stream = ExtResource("3_hom7b")
 
 [node name="Advanced" type="Panel" parent="Settings Menu/TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xv5xb")
+metadata/_tab_index = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Menu/TabContainer/Advanced"]
 layout_mode = 1
