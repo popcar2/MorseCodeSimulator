@@ -179,18 +179,18 @@ popup/item_4/id = 4
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 
-[node name="Audio Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer"]
+[node name="Volume Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer"]
 layout_mode = 2
 
-[node name="Audio Volume Label" type="Label" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Audio Container"]
+[node name="Audio Volume Label" type="Label" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Volume Container"]
 layout_mode = 2
 text = "Audio Volume"
 
-[node name="MarginContainer" type="MarginContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Audio Container"]
+[node name="MarginContainer" type="MarginContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Volume Container"]
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 
-[node name="Audio Volume Slider" type="HSlider" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Audio Container"]
+[node name="Audio Volume Slider" type="HSlider" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Volume Container"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -198,9 +198,29 @@ max_value = 0.6
 step = 0.01
 value = 0.5
 
-[node name="MorseSoundTest" type="AudioStreamPlayer" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Audio Container"]
-unique_name_in_owner = true
-stream = ExtResource("3_hom7b")
+[node name="MarginContainer4" type="MarginContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="Pitch Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Pitch Label" type="Label" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Pitch Container"]
+layout_mode = 2
+text = "Morse Sound Pitch"
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Pitch Container"]
+custom_minimum_size = Vector2(129, 0)
+layout_mode = 2
+
+[node name="Pitch Slider" type="HSlider" parent="Settings Menu/TabContainer/Settings/VBoxContainer/Pitch Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.2
+max_value = 1.8
+step = 0.1
+value = 1.0
 
 [node name="Advanced" type="Panel" parent="Settings Menu/TabContainer"]
 visible = false
@@ -219,7 +239,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 18)
 layout_mode = 2
 
 [node name="Long Press Time Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
@@ -401,11 +421,17 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.784314)
 theme_override_font_sizes/font_size = 16
 text = "Created by popcar2 :)"
 
+[node name="MorseSoundTest" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_hom7b")
+
 [connection signal="gui_input" from="Background Panel" to="." method="_on_background_panel_gui_input"]
 [connection signal="item_selected" from="Settings Menu/TabContainer/Settings/VBoxContainer/Morse Speed Container/Morse Speed Option" to="." method="_on_morse_speed_option_item_selected"]
 [connection signal="item_selected" from="Settings Menu/TabContainer/Settings/VBoxContainer/Morse Playback Speed Container/Morse Playback Option" to="." method="_on_morse_playback_option_item_selected"]
-[connection signal="drag_ended" from="Settings Menu/TabContainer/Settings/VBoxContainer/Audio Container/Audio Volume Slider" to="." method="_on_audio_volume_slider_drag_ended"]
-[connection signal="value_changed" from="Settings Menu/TabContainer/Settings/VBoxContainer/Audio Container/Audio Volume Slider" to="." method="_on_audio_volume_slider_value_changed"]
+[connection signal="drag_ended" from="Settings Menu/TabContainer/Settings/VBoxContainer/Volume Container/Audio Volume Slider" to="." method="_on_audio_volume_slider_drag_ended"]
+[connection signal="value_changed" from="Settings Menu/TabContainer/Settings/VBoxContainer/Volume Container/Audio Volume Slider" to="." method="_on_audio_volume_slider_value_changed"]
+[connection signal="drag_ended" from="Settings Menu/TabContainer/Settings/VBoxContainer/Pitch Container/Pitch Slider" to="." method="_on_pitch_slider_drag_ended"]
+[connection signal="value_changed" from="Settings Menu/TabContainer/Settings/VBoxContainer/Pitch Container/Pitch Slider" to="." method="_on_pitch_slider_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Long Press Time Container/Long Press Time Spinbox" to="." method="_on_long_press_time_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Letter Time Container/Letter Time Spinbox" to="." method="_on_letter_time_spinbox_value_changed"]
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Word Time Container/Word Time Spinbox" to="." method="_on_word_time_spinbox_value_changed"]

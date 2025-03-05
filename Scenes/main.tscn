@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cu1evcqwaw481"]
+[gd_scene load_steps=19 format=3 uid="uid://cu1evcqwaw481"]
 
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_1p657"]
 [ext_resource type="Script" uid="uid://1p6f02yrtcj" path="res://Scripts/morse_controller.gd" id="1_dkpn7"]
@@ -23,6 +23,8 @@ border_color = Color(0.0627451, 0.772549, 0.584314, 1)
 bg_color = Color(0.0117647, 0.0313726, 0.0666667, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5erc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkdf5"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -264,8 +266,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_r5erc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jkdf5")
 placeholder_text = "Type here to translate (Text > Morse)..."
 wrap_mode = 1
+caret_blink = true
+caret_multiple = false
 script = ExtResource("13_ry7g3")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal debug_mode_changed(activated: bool)
+signal pitch_changed(new_pitch: float)
 var debug_mode: bool = false
 
 @onready var morse_speed: int = %'Morse Speed Option'.selected # 2
@@ -8,12 +9,13 @@ var debug_mode: bool = false
 @onready var word_time: float = %'Word Time Spinbox'.value # 1
 var long_press_time: float = 0.15
 
-# TODO: Make options for these variables and hook it up with morse_controller
 @onready var playback_speed: int = %'Morse Playback Option'.selected
 @onready var playback_dit_time: float = %'Playback Dit Spinbox'.value
 @onready var playback_dah_time: float = %'Playback Dah Spinbox'.value
 @onready var playback_letter_time: float = %'Playback Letter Spinbox'.value
 @onready var playback_word_time: float = %'Playback Word Spinbox'.value
+
+var morse_sound_pitch: float
 
 func _ready():
 	visible = false
@@ -127,5 +129,16 @@ func _on_audio_volume_slider_drag_ended(_value_changed):
 
 func _on_audio_volume_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(0, linear_to_db(value * 2))
+	if %MorseSoundTest.playing == false:
+		%MorseSoundTest.play()
+
+func _on_pitch_slider_drag_ended(value_changed):
+	SoundManager.play_click_sfx()
+	%MorseSoundTest.stop()
+	
+	pitch_changed.emit(%MorseSoundTest.pitch_scale)
+
+func _on_pitch_slider_value_changed(value):
+	%MorseSoundTest.pitch_scale = value
 	if %MorseSoundTest.playing == false:
 		%MorseSoundTest.play()

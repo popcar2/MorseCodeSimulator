@@ -26,6 +26,7 @@ func _ready():
 	reset_button.connect("pressed", reset_label)
 	hide_button.connect("toggled", _hide_panel_toggled)
 	play_morse_button.connect("toggled", _on_play_morse_button_toggled)
+	SettingsMenu.pitch_changed.connect(_on_settings_pitch_changed)
 
 func _input(event):
 	if text_edit.is_focused:
@@ -191,3 +192,6 @@ func _on_morse_panel_gui_input(event):
 		var temp_label: Label = copied_to_clipboard_label.instantiate()
 		temp_label.position = get_viewport().get_mouse_position() - temp_label.size / 2
 		add_sibling(temp_label)
+
+func _on_settings_pitch_changed(new_pitch: float):
+	morse_audio.pitch_scale = new_pitch
