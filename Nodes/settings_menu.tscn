@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://duew5kn8un3rv"]
+[gd_scene load_steps=17 format=3 uid="uid://duew5kn8un3rv"]
 
 [ext_resource type="Script" uid="uid://c10r4jbiraidr" path="res://Scripts/settings_menu.gd" id="1_btk2r"]
 [ext_resource type="Theme" uid="uid://3br2dpdlo6tc" path="res://Themes/DefaultTheme.tres" id="1_xid6k"]
 [ext_resource type="Theme" uid="uid://cf75duugimbj7" path="res://Themes/CircularButton.tres" id="3_gghs3"]
 [ext_resource type="AudioStream" uid="uid://ddbe3j2cyhrl" path="res://SFX/tone.wav" id="3_hom7b"]
+[ext_resource type="Texture2D" uid="uid://spjrfgk685vd" path="res://Art/Heart.png" id="4_dsul2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qwin"]
 bg_color = Color(0, 0, 0, 0.294118)
@@ -39,7 +40,7 @@ corner_radius_top_right = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hom7b"]
 content_margin_left = 5.0
 content_margin_right = 5.0
-bg_color = Color(0.0585444, 0.675182, 0.509846, 1)
+bg_color = Color(0.0321614, 0.485925, 0.36449, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 
@@ -54,6 +55,12 @@ corner_radius_top_right = 5
 bg_color = Color(0.0509804, 0.0980392, 0.168627, 1)
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_hom7b"]
+color = Color(0.220192, 0.335936, 0.509567, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_dsul2"]
+color = Color(0.220192, 0.335936, 0.509567, 1)
 
 [node name="Settings Menu Control" type="CanvasLayer"]
 script = ExtResource("1_btk2r")
@@ -88,6 +95,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/side_margin = 15
 theme_override_styles/tab_focus = SubResource("StyleBoxFlat_p0fgr")
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_50ago")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_50ago")
@@ -301,6 +309,7 @@ select_all_on_focus = true
 
 [node name="HSeparator" type="HSeparator" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_hom7b")
 
 [node name="Playback Dit Time Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
 layout_mode = 2
@@ -379,6 +388,7 @@ select_all_on_focus = true
 
 [node name="HSeparator2" type="HSeparator" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_dsul2")
 
 [node name="Debug Mode Container" type="HBoxContainer" parent="Settings Menu/TabContainer/Advanced/VBoxContainer"]
 layout_mode = 2
@@ -389,6 +399,7 @@ text = "Debug Mode"
 
 [node name="Debug Mode Button" type="CheckBox" parent="Settings Menu/TabContainer/Advanced/VBoxContainer/Debug Mode Container"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 size_flags_horizontal = 10
 
@@ -421,6 +432,25 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.784314)
 theme_override_font_sizes/font_size = 16
 text = "Created by popcar2 :)"
 
+[node name="DonateButton" type="Button" parent="Settings Menu"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -51.0
+offset_right = -25.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Donate"
+icon = ExtResource("4_dsul2")
+icon_alignment = 2
+expand_icon = true
+
 [node name="MorseSoundTest" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_hom7b")
@@ -441,3 +471,4 @@ stream = ExtResource("3_hom7b")
 [connection signal="value_changed" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Playback Word Time Container/Playback Word Spinbox" to="." method="_on_playback_word_spinbox_value_changed"]
 [connection signal="toggled" from="Settings Menu/TabContainer/Advanced/VBoxContainer/Debug Mode Container/Debug Mode Button" to="." method="_on_debug_mode_button_toggled"]
 [connection signal="pressed" from="Settings Menu/Close Button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="Settings Menu/DonateButton" to="." method="_on_donate_button_pressed"]

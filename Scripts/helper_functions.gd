@@ -1,4 +1,5 @@
 extends Node
+
 func morse_to_text(text: String) -> String:
 	var split_text: PackedStringArray = text.split(' ')
 	var translated_text: String = ''

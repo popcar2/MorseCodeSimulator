@@ -132,7 +132,7 @@ func _on_audio_volume_slider_value_changed(value):
 	if %MorseSoundTest.playing == false:
 		%MorseSoundTest.play()
 
-func _on_pitch_slider_drag_ended(value_changed):
+func _on_pitch_slider_drag_ended(_value_changed):
 	SoundManager.play_click_sfx()
 	%MorseSoundTest.stop()
 	
@@ -142,3 +142,7 @@ func _on_pitch_slider_value_changed(value):
 	%MorseSoundTest.pitch_scale = value
 	if %MorseSoundTest.playing == false:
 		%MorseSoundTest.play()
+
+
+func _on_donate_button_pressed():
+	OS.shell_open("https://ko-fi.com/popcar2")
