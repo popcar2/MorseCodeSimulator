@@ -1,7 +1,11 @@
 extends CanvasLayer
 
 signal debug_mode_changed(activated: bool)
-signal pitch_changed(new_pitch: float)
+signal morse_hz_changed()
+
+signal audio_slider_started
+signal audio_slider_ended
+
 var debug_mode: bool = false
 
 @onready var morse_speed: int = %'Morse Speed Option'.selected # 2
@@ -15,7 +19,8 @@ var long_press_time: float = 0.15
 @onready var playback_letter_time: float = %'Playback Letter Spinbox'.value
 @onready var playback_word_time: float = %'Playback Word Spinbox'.value
 
-var morse_sound_pitch: float
+@onready var hz_label: Label = %'Hz Label'
+var morse_audio_Hz: int = 440
 
 func _ready():
 	visible = false
@@ -123,26 +128,25 @@ func _on_background_panel_gui_input(event):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
 		show_hide_menu()
 
+func _on_audio_volume_slider_drag_started():
+	audio_slider_started.emit()
+
 func _on_audio_volume_slider_drag_ended(_value_changed):
-	SoundManager.play_click_sfx()
-	%MorseSoundTest.stop()
+	audio_slider_ended.emit()
 
 func _on_audio_volume_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(0, linear_to_db(value * 2))
-	if %MorseSoundTest.playing == false:
-		%MorseSoundTest.play()
-
-func _on_pitch_slider_drag_ended(_value_changed):
-	SoundManager.play_click_sfx()
-	%MorseSoundTest.stop()
-	
-	pitch_changed.emit(%MorseSoundTest.pitch_scale)
-
-func _on_pitch_slider_value_changed(value):
-	%MorseSoundTest.pitch_scale = value
-	if %MorseSoundTest.playing == false:
-		%MorseSoundTest.play()
-
 
 func _on_donate_button_pressed():
 	OS.shell_open("https://ko-fi.com/popcar2")
+
+func _on_hz_slider_drag_started():
+	audio_slider_started.emit()
+
+func _on_hz_slider_drag_ended(_value_changed):
+	audio_slider_ended.emit()
+
+func _on_hz_slider_value_changed(value):
+	morse_audio_Hz = value
+	morse_hz_changed.emit()
+	hz_label.text = "(%dHz)" % morse_audio_Hz

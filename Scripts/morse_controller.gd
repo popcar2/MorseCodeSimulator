@@ -18,6 +18,11 @@ extends Node
 var is_held: bool = false
 var is_playing_back: bool = false
 
+# Audio stream vars
+var playback: AudioStreamPlayback = null
+var sample_hz: float = 11025.0
+var phase: float = 0.0
+
 func _ready():
 	morse_button.connect("button_down", _on_morse_button_down)
 	morse_button.connect("button_up", _on_morse_button_up)
@@ -26,7 +31,21 @@ func _ready():
 	reset_button.connect("pressed", reset_label)
 	hide_button.connect("toggled", _hide_panel_toggled)
 	play_morse_button.connect("toggled", _on_play_morse_button_toggled)
-	SettingsMenu.pitch_changed.connect(_on_settings_pitch_changed)
+	SettingsMenu.audio_slider_started.connect(start_morse_audio)
+	SettingsMenu.audio_slider_ended.connect(stop_morse_audio)
+	SettingsMenu.morse_hz_changed.connect(_on_morse_hz_changed)
+	
+	# Prepare audiostreamgenerator
+	morse_audio.play()
+	morse_audio.stream_paused = true
+	playback = morse_audio.get_stream_playback()
+	generate_audio_stream()
+
+func start_morse_audio():
+	morse_audio.stream_paused = false
+
+func stop_morse_audio():
+	morse_audio.stream_paused = true
 
 func _input(event):
 	if text_edit.is_focused:
@@ -54,7 +73,7 @@ func _on_morse_button_down():
 	text_edit.hide()
 	normal_label.show()
 	
-	morse_audio.play()
+	start_morse_audio()
 
 func _on_morse_button_up():
 	if !is_held:
@@ -80,7 +99,7 @@ func _on_morse_button_up():
 	normal_label.text = HelperFunctions.highlight_specific_letter(
 		HelperFunctions.morse_to_text(HelperFunctions.strip_bbcode(morse_label.text)), -1)
 	
-	morse_audio.stop()
+	stop_morse_audio()
 
 func _on_word_timer_timeout():
 	if !is_held:
@@ -144,14 +163,14 @@ func _on_play_morse_button_toggled(_toggled: bool):
 				HelperFunctions.strip_bbcode(normal_label.text), word_count + space_count)
 		
 		if c == 'E':
-			morse_audio.play()
+			start_morse_audio()
 			await get_tree().create_timer(SettingsMenu.playback_dit_time).timeout
-			morse_audio.stop()
+			stop_morse_audio()
 			await get_tree().create_timer(SettingsMenu.playback_dit_time).timeout
 		elif c == 'T':
-			morse_audio.play()
+			start_morse_audio()
 			await get_tree().create_timer(SettingsMenu.playback_dah_time).timeout
-			morse_audio.stop()
+			stop_morse_audio()
 			await get_tree().create_timer(SettingsMenu.playback_dit_time).timeout
 		elif c == ' ':
 			word_count += 1
@@ -193,5 +212,22 @@ func _on_morse_panel_gui_input(event):
 		temp_label.position = get_viewport().get_mouse_position() - temp_label.size / 2
 		add_sibling(temp_label)
 
-func _on_settings_pitch_changed(new_pitch: float):
-	morse_audio.pitch_scale = new_pitch
+func _on_morse_hz_changed():
+	# TODO: Figure out a way to go through the buffer quickly so there isn't a delay
+	#       when messing with the Hz slider.
+	generate_audio_stream()
+
+# After lots of trial and error, I decided using the audiostreamgenerator would
+# be the best way to get rid of popping sounds; and it gives me direct control over
+# the pulse Hz being played.
+func generate_audio_stream():
+	var increment = SettingsMenu.morse_audio_Hz / sample_hz
+	
+	var to_fill = playback.get_frames_available()
+	while to_fill > 0:
+		playback.push_frame(Vector2.ONE * sin(phase * TAU)) # Audio frames are stereo.
+		phase = fmod(phase + increment, 1.0)
+		to_fill -= 1
+
+func _on_audio_generation_timer_timeout():
+	generate_audio_stream()

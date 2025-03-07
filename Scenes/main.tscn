@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://1p6f02yrtcj" path="res://Scripts/morse_controller.gd" id="1_dkpn7"]
 [ext_resource type="PackedScene" uid="uid://2bbtpvkbfygt" path="res://Nodes/copied_to_clipboard_label.tscn" id="3_hbix7"]
 [ext_resource type="FontFile" uid="uid://bxy4r5jqiib5t" path="res://Fonts/morse.ttf" id="3_vom0s"]
-[ext_resource type="AudioStream" uid="uid://ddbe3j2cyhrl" path="res://SFX/tone.wav" id="4_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://cp6th6imgm14l" path="res://Art/cog.png" id="5_jkdf5"]
 [ext_resource type="Theme" uid="uid://cf75duugimbj7" path="res://Themes/CircularButton.tres" id="5_lqst7"]
 [ext_resource type="Script" uid="uid://5x7m35j7naty" path="res://Scripts/settings_button.gd" id="5_vof65"]
@@ -14,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://di8estpu74bcx" path="res://Art/Morse Paper.png" id="9_q0jgo"]
 [ext_resource type="Theme" uid="uid://bqww8sf32ya83" path="res://Themes/RoundedTopButton.tres" id="11_em8br"]
 [ext_resource type="Script" uid="uid://dan7lfq0kkwn3" path="res://Scripts/deselect_outside_click.gd" id="13_ry7g3"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_fdnlq"]
+mix_rate = 11025.0
+buffer_length = 0.4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_suj27"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -53,9 +56,12 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Morse Audio" type="AudioStreamPlayer" parent="Morse Controller"]
-stream = ExtResource("4_jkdf5")
-volume_db = 10.0
-pitch_scale = 0.9
+stream = SubResource("AudioStreamGenerator_fdnlq")
+volume_db = -10.0
+
+[node name="Audio Generation Timer" type="Timer" parent="Morse Controller"]
+wait_time = 0.2
+autostart = true
 
 [node name="Settings Button" type="Button" parent="." groups=["button click"]]
 texture_filter = 6
@@ -274,6 +280,7 @@ caret_multiple = false
 script = ExtResource("13_ry7g3")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="timeout" from="Morse Controller/Audio Generation Timer" to="Morse Controller" method="_on_audio_generation_timer_timeout"]
 [connection signal="pressed" from="Settings Button" to="Settings Button" method="_on_pressed"]
 [connection signal="mouse_entered" from="Bottom Panels/Cheat Sheet" to="Bottom Panels/Cheat Sheet" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Bottom Panels/Cheat Sheet" to="Bottom Panels/Cheat Sheet" method="_on_mouse_exited"]
